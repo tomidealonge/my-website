@@ -1,0 +1,32 @@
+%content {
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  will-change: transform;
+}
+
+%desktop {
+  @include media("<=phone") {
+    display: none;
+  }
+}
+
+%desktop-tab {
+  @include media("<=tablet") {
+    display: none;
+  }
+}
+
+%tablet {
+  @include media(">tablet") {
+    display: none;
+  }
+}
+
+%mobile {
+  @include media(">phone") {
+    display: none;
+  }
+}

@@ -1,0 +1,20 @@
+// Color
+$black: #333;
+$white: #ffffff;
+
+
+// Easing
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
+$z-indexes: ("preloader",
+  "loader-transition",
+  "brain",
+  "transition",
+  "modal",
+  "modal-transition",
+  "cursor",
+  "noscript",
+  "navigation",
+  "content",
+  "canvas"
+);
