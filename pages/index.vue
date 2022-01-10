@@ -1,5 +1,10 @@
 <template>
-  <Tutorial/>
+<div>
+  <HeaderComponent/>
+  <AboutComponent/>
+  <WorksComponent/>
+  <ContactComponent/>
+</div>
 </template>
 
 <script>
