@@ -1,6 +1,7 @@
 .nav-links {
   position: fixed;
-  left: 6rem;
+  z-index: 1;
+  left: 8rem;
   top: 50%;
   bottom: auto;
   right: auto;
@@ -23,7 +24,7 @@
 
     &.--active {
       color: $white;
-      transform: translateX(35px);
+      // transform: translateX(35px);
 
       &::before {
         content: "";
@@ -42,12 +43,13 @@
         right: 20px;
         flex-shrink: 0;
         transform: translateY(-50%);
+        transition: all 500ms ease-in-out;
       }
     }
 
     &:hover {
       color: $white;
-      transform: translateX(35px);
+      // transform: translateX(35px);
 
       &::before {
         content: "";
@@ -67,6 +69,7 @@
         right: 20px;
         flex-shrink: 0;
         transform: translateY(-50%);
+        transition: all 500ms ease-in-out;
       }
     }
 

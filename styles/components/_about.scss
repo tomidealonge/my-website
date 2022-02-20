@@ -47,6 +47,10 @@
     @extend %body-25;
     color: $white;
     z-index: 1;
+
+    @include media("<=tablet") {
+      padding: 20px;
+    }
   }
 
   &__white-bg-text-block {
@@ -54,5 +58,9 @@
     padding: 5.7rem;
     @extend %body-16;
     z-index: 1;
+
+    @include media("<=tablet") {
+      padding: 20px;
+    }
   }
 }
