@@ -4,4 +4,21 @@
   position: relative;
   overflow-y: auto;
   @extend %inter;
+  cursor: auto;
+}
+
+.cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: $white;
+  transform: translate(-50%, -50%);
+  transition: 0.2s;
+  pointer-events: none;
+  mix-blend-mode: difference;
+}
+
+.hover-state {
+  transform: scale(4);
 }

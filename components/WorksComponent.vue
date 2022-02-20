@@ -4,7 +4,7 @@
       <div class="project">
         <div class="project__line"></div>
         <div class="project__desc">
-          <div class="project__title">Kelloggs</div>
+          <a href="https://kelloggsnigeria.ng/" target="_blank" @mouseenter="increaseCursor" @mouseleave="decreaseCursor" class="project__title">Kelloggs</a>
           <ul class="project__summary">
             <li>UI Development</li>
             <li>Frontend Functionalities</li>
@@ -14,7 +14,7 @@
       <div class="project__wrapper">
         <div class="project__line"></div>
         <div class="project__desc">
-          <div class="project__title">Qwiik</div>
+          <a href="https://www.qwiik.co/" target="_blank" @mouseenter="increaseCursor" @mouseleave="decreaseCursor" class="project__title">Qwiik</a>
           <ul class="project__summary">
             <li>UI Development</li>
             <li>Frontend Functionalities</li>
@@ -24,17 +24,18 @@
       <div class="project__wrapper">
         <div class="project__line"></div>
         <div class="project__desc">
-          <div class="project__title">Kelloggs</div>
+          <a href="https://moovies-hub.netlify.app/" target="_blank" @mouseenter="increaseCursor" @mouseleave="decreaseCursor" class="project__title">Moovies Hub</a>
           <ul class="project__summary">
             <li>UI Development</li>
             <li>Frontend Functionalities</li>
           </ul>
         </div>
+        <div class="project__line"></div>
       </div>
-      <div class="project__wrapper">
+      <div v-if="false" class="project__wrapper">
         <div class="project__line"></div>
         <div class="project__desc">
-          <div class="project__title">Kelloggs</div>
+          <a href="https://moovies-hub.netlify.app/" target="_blank" @mouseenter="increaseCursor" @mouseleave="decreaseCursor" class="project__title">Moovies Hub</a>
           <ul class="project__summary">
             <li>UI Development</li>
             <li>Frontend Functionalities</li>
@@ -47,5 +48,8 @@
 </template>
 
 <script>
-export default {};
+import mouseHover from '~/mixin.js/mouse-hover'
+export default {
+  mixins: [mouseHover],
+};
 </script>

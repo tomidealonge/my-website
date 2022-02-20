@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="hero">
+    <div @mouseenter="increaseCursor" @mouseleave="decreaseCursor" class="hero">
       <div class="hero__first-line">
         <span>F</span>
         <span>R</span>
@@ -27,7 +27,8 @@
 </template>
 
 <script>
-  export default {
-    
-  }
+import mouseHover from '~/mixin.js/mouse-hover'
+export default {
+  mixins: [mouseHover],
+};
 </script>
