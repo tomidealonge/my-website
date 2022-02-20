@@ -4,19 +4,41 @@
   align-items: center;
   height: 100vh;
   overflow-x: hidden;
+  position: relative;
 
   &__picture {
     width: 100%;
     max-width: 55.6rem;
     height: 55.6rem;
     margin-right: -10.8rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @include media("<=tablet") {
+      width: 300px;
+      height: 300px;
+      max-width: unset;
+      margin-right: 0;
+      position: absolute;
+      top: 0;
+    }
   }
 
   &__text-block {
     width: 100%;
-    max-width: 71.3rem;
     position: relative;
+    max-width: 71.3rem;
     right: -21.3rem;
+    z-index: 1;
+
+    @include media("<=tablet") {
+      max-width: unset;
+      right: 0;
+    }
   }
 
   &__main-text {
@@ -24,11 +46,13 @@
     max-width: 46.9rem;
     @extend %body-25;
     color: $white;
+    z-index: 1;
   }
 
   &__white-bg-text-block {
     background-color: $white;
     padding: 5.7rem;
-    @extend %body-16
+    @extend %body-16;
+    z-index: 1;
   }
 }

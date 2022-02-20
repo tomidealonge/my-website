@@ -1,4 +1,5 @@
 .contact {
+
   position: relative;
   color: $white;
   margin-left: 30.4rem;
@@ -7,6 +8,18 @@
   display: flex;
   justify-content: center;
   flex-direction: column;
+
+  @include media("<=tablet") {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  &__block {
+    @include media("<=tablet") {
+      margin-right: 30px;
+      margin-top: 20px
+    }
+  }
 
   &__title {
     @extend %title-45;
@@ -25,6 +38,10 @@
     display: flex;
     justify-content: space-between;
     margin-top: 5rem;
+
+    @include media ("<=tablet") {
+      flex-wrap: wrap
+    }
   }
 
   &__sub-title {

@@ -6,6 +6,10 @@
   right: auto;
   transform: translateY(-70%);
 
+  @include media("<=tablet") {
+    display: none;
+  }
+
   li {
     margin: 2.1rem 0px;
     color: rgba($color: $white, $alpha: 0.4);

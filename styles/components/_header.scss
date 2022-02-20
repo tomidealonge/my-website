@@ -5,6 +5,14 @@
   justify-content: center;
   padding-left: 25.3rem;
 
+  @include media("<=tablet") {
+    padding-left: 40px
+  }
+
+  @include media("<=phone") {
+    padding-left: 20px
+  }
+
   .hero {
     &__first-line {
       color: white;
@@ -39,5 +47,13 @@
     color: $gray;
     @extend %body-16;
     align-self: flex-end;
+
+    @include media("<=tablet") {
+      margin-top: 20px;
+      padding-left: 0px;
+      padding-right: 40px;
+      align-self: flex-start;
+      max-width: unset;
+    }
   }
 }

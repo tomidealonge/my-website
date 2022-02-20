@@ -6,6 +6,11 @@
   align-items: center;
   color: $white;
 
+  @include media("<=tablet") {
+    margin-left: 0px;
+    margin-right: 0px;
+  }
+
   &__container {
     width: 100%
   }
@@ -22,7 +27,12 @@
       margin: 40px 30px;
       display: flex;
       justify-content: space-between;
-      align-items: center
+      align-items: center;
+
+      @include media("<=tablet") {
+        margin: 20px;
+        display: block
+      }
     }
 
     &__title {
