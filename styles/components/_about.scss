@@ -1,0 +1,34 @@
+.about {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 100vh;
+  overflow-x: hidden;
+
+  &__picture {
+    width: 100%;
+    max-width: 55.6rem;
+    height: 55.6rem;
+    margin-right: -10.8rem;
+  }
+
+  &__text-block {
+    width: 100%;
+    max-width: 71.3rem;
+    position: relative;
+    right: -21.3rem;
+  }
+
+  &__main-text {
+    padding: 5.7rem;
+    max-width: 46.9rem;
+    @extend %body-25;
+    color: $white;
+  }
+
+  &__white-bg-text-block {
+    background-color: $white;
+    padding: 5.7rem;
+    @extend %body-16
+  }
+}

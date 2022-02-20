@@ -1,0 +1,40 @@
+.projects {
+  margin-left: 30.4rem;
+  margin-right: 13.5rem;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  color: $white;
+
+  &__container {
+    width: 100%
+  }
+
+  .project {
+    &__line {
+      height: 3px;
+      background-color: rgba($color: $white, $alpha: 0.5);
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    &__desc {
+      margin: 40px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center
+    }
+
+    &__title {
+      @extend %title-45;
+      text-transform: uppercase;
+    }
+
+    &__summary {
+      color: #757575;
+      @extend %body-16;
+      line-height: 24px;
+    }
+  }
+
+}

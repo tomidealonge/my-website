@@ -1,0 +1,43 @@
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 25.3rem;
+
+  .hero {
+    &__first-line {
+      color: white;
+      font-size: 0;
+
+      span {
+        @extend %title-152;
+      }
+
+    }
+
+    &__last-line {
+      font-size: 0;
+      -webkit-text-stroke: 1px $white;
+      text-shadow: -1px -1px 0 $white,
+        1px -1px 0 $white,
+        -1px 1px 0 $white,
+        1px 1px 0 $white;
+
+      span {
+        @extend %title-152;
+      }
+
+    }
+  }
+
+  .sub-hero {
+    margin-top: 2.6rem;
+    margin-right: 12.8rem;
+    width: 100%;
+    max-width: 43.3rem;
+    color: $gray;
+    @extend %body-16;
+    align-self: flex-end;
+  }
+}

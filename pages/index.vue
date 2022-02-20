@@ -1,5 +1,6 @@
 <template>
-<div>
+<div class="home">
+  <NavComponent/>
   <HeaderComponent/>
   <AboutComponent/>
   <WorksComponent/>
@@ -8,5 +9,7 @@
 </template>
 
 <script>
-export default {}
+export default {
+
+}
 </script>

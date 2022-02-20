@@ -1,0 +1,70 @@
+.nav-links {
+  position: fixed;
+  left: 6rem;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  transform: translateY(-70%);
+
+  li {
+    margin: 2.1rem 0px;
+    color: rgba($color: $white, $alpha: 0.4);
+    text-transform: uppercase;
+    @extend %nav;
+    cursor: pointer;
+    transition-property: color, transform;
+    transition-duration: 0.5s;
+    transition-timing-function: $ease-out-expo;
+    position: relative;
+
+    &.--active {
+      color: $white;
+      transform: translateX(35px);
+
+      &::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid $white;
+        background-image: url('@/assets/images/right-arrow.png');
+        background-position: center;
+        background-size: 40%;
+        position: absolute;
+        background-repeat: no-repeat;
+        left: -40%;
+        top: 50%;
+        bottom: 0;
+        right: 20px;
+        flex-shrink: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+    &:hover {
+      color: $white;
+      transform: translateX(35px);
+
+      &::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        border: 1px solid $white;
+        background-image: url('@/assets/images/right-arrow.png');
+        background-position: center;
+        background-size: 40%;
+        position: absolute;
+        background-repeat: no-repeat;
+        position: absolute;
+        left: -40%;
+        top: 50%;
+        bottom: 0;
+        right: 20px;
+        flex-shrink: 0;
+        transform: translateY(-50%);
+      }
+    }
+
+  }
+}

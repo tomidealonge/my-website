@@ -1,0 +1,7 @@
+.home {
+  background-color: $black;
+  height: 100vh;
+  position: relative;
+  overflow-y: auto;
+  @extend %inter;
+}
