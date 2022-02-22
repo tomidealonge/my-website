@@ -1,6 +1,5 @@
 .nav-links {
   position: fixed;
-  z-index: 1;
   left: 8rem;
   top: 50%;
   bottom: auto;
@@ -24,7 +23,6 @@
 
     &.--active {
       color: $white;
-      // transform: translateX(35px);
 
       &::before {
         content: "";

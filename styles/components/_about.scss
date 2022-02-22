@@ -5,6 +5,11 @@
   height: 100vh;
   overflow-x: hidden;
   position: relative;
+  margin-left: 25.3rem;
+
+  @include media("<=tablet") {
+    margin-left: 0;
+  }
 
   &__picture {
     width: 100%;
