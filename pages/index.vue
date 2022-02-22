@@ -44,7 +44,7 @@ export default {
     },
 
     goingDown(){
-      if(!this.activeComponentIndex === this.components.length-1) return
+      if(this.activeComponentIndex === this.components.length-1) return
       this.updateActiveComponent(this.components[this.activeComponentIndex+1])
     },
 
