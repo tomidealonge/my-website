@@ -12,6 +12,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "core-js": "^3.15.1",
     "nuxt": "^2.15.7",
+    "nuxt-gsap-module": "^1.6.0",
+    "splitting": "^1.0.6",
     "vue2-touch-events": "^3.2.2"
   },
   "devDependencies": {

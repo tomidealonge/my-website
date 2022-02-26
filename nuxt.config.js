@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "🚀Tomide - Alonge🚀",
+    title: "Tomide 🚀",
     htmlAttrs: {
       lang: "en"
     },
@@ -25,14 +25,15 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/directives'
+    '~/plugins/directives',
+    '~/plugins/prototypes'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [],
+  buildModules: ['nuxt-gsap-module'],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [

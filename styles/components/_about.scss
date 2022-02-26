@@ -55,6 +55,8 @@
 
     @include media("<=tablet") {
       padding: 20px;
+      max-width: unset;
+      font-size: 20px;
     }
   }
 

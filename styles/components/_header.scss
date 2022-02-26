@@ -14,15 +14,40 @@
   }
 
   .hero {
+    .text-wrapper {
+      position: relative;
+    }
+
     &__first-line {
-      color: white;
+      color: $white;
+      clip-path: polygon(100% 0, 100% 0, 0 0, 0 0);
       font-size: 0;
 
       span {
         @extend %title-152;
+        display: inline-block;
       }
 
+      &--overlay {
+        clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        font-size: 0;
+        color: $black;
+        -webkit-text-stroke: 1px $white;
+        text-shadow: -1px -1px 0 $white,
+          1px -1px 0 $white,
+          -1px 1px 0 $white,
+          1px 1px 0 $white;
+
+        span {
+          @extend %title-152;
+          display: inline-block;
+        }
+      }
     }
+
 
     cursor: default;
 
@@ -33,9 +58,12 @@
         1px -1px 0 $white,
         -1px 1px 0 $white,
         1px 1px 0 $white;
+      opacity: 0;
+      clip-path: polygon(100% 0, 100% 0, 0 0, 0 0);
 
       span {
         @extend %title-152;
+        display: inline-block;
       }
 
     }
@@ -50,12 +78,23 @@
     @extend %body-16;
     align-self: flex-end;
 
+
     @include media("<=tablet") {
       margin-top: 20px;
       padding-left: 0px;
       padding-right: 40px;
       align-self: flex-start;
       max-width: unset;
+    }
+
+    .word {
+      overflow: hidden;
+      vertical-align: top;
+      display: inline-flex;
+
+      span {
+        display: inline-block;
+      }
     }
   }
 }
