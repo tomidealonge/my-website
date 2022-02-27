@@ -41,7 +41,7 @@
           </div>
         </div>
       </div>
-      <p ref="splitText" class="sub-hero">
+      <p class="sub-hero">
         Over the past 3 years, as an art director and designer, I’ve worked with
         big companies and up-and-coming startups to successfully help them reach
         their full potential.
@@ -52,17 +52,15 @@
 
 <script>
 import mouseHover from "~/mixin.js/mouse-hover";
-import "splitting/dist/splitting.css";
-import "splitting/dist/splitting-cells.css";
-import Splitting from "splitting";
+import splitText from "~/mixin.js/splitting";
 
 export default {
-  mixins: [mouseHover],
+  mixins: [mouseHover, splitText],
 
   data() {
     return {
       lines: [],
-      splitting: Splitting,
+      selector: "sub-hero",
       timeline: this.$gsap.timeline({ paused: true })
     };
   },
@@ -118,35 +116,16 @@ export default {
         },
         "-=2"
       )
-      .add(this.textAnimation, "-=2");
+      .call(this.textAnimation, [this.selector], "-=2");
   },
 
   methods: {
-    textAnimation() {
-      const target = document.querySelector(".sub-hero");
-      const result = this.splitting({
-        target,
-        by: "lines"
-      });
-
-      result[0].lines.forEach((line, lineIndex) => {
-        line.forEach((word, wordIndex) => {
-          this.$gsap.from(word, {
-            opacity: 0,
-            y: 15,
-            rotate: 6,
-            delay: lineIndex * 0.2 + wordIndex * 0.02 + 0.5
-          });
-        });
-      });
-    },
-
     afterEnter() {
       this.timeline.play();
     },
 
     leave() {
-      this.timeline.reverse();
+      // this.timeline.reverse();
     }
   }
 };

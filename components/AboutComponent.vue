@@ -1,5 +1,5 @@
 <template>
-  <transition>
+  <transition appear @after-enter="afterEnter" @before-leave="leave">
     <div class="about">
       <div class="about__text-block">
         <p class="about__main-text">
@@ -28,17 +28,58 @@
 </template>
 
 <script>
+import mouseHover from "~/mixin.js/mouse-hover";
+import splitText from "~/mixin.js/splitting";
+
 export default {
+  mixins: [mouseHover, splitText],
+
   data() {
     return {
-      key: ""
+      selector: "about__white-bg-text-block p",
+      mainTextSelector: "about__main-text",
+      timeline: this.$gsap.timeline({ paused: true })
     };
   },
 
-  methods: {
-    enterAnimation() {},
+  mounted() {
+    this.timeline
+      .to(".about__picture", {
+        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+        duration: 1.2,
+        ease: "Power2.easeout"
+      })
+      .to(
+        `.about__white-bg-text-block`,
+        {
+          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
+          duration: 1.2,
+          ease: "Power2.easeout"
+        },
+        "<"
+      )
+      .to(`.about__main-text`, {
+        opacity: 1
+      })
+      .call(this.textAnimation, [this.mainTextSelector], "<")
+      .to(
+        `.about__white-bg-text-block p`,
+        {
+          opacity: 1
+        },
+        "-=1"
+      )
+      .call(this.textAnimation, [this.selector], "<");
+  },
 
-    leaveAnimation() {}
+  methods: {
+    afterEnter() {
+      this.timeline.play();
+    },
+
+    leave() {
+      // this.timeline.reverse();
+    }
   }
 };
 </script>
