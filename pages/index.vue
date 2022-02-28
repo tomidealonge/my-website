@@ -1,68 +1,95 @@
 <template>
-<div v-touch:swipe="swipeListener" @wheel.prevent="scrollDirection" class="home">
-  <NavComponent :activeComponentFromScroll="activeComponent" @updateActiveComponent="updateActiveComponent" />
-  <component :is="activeComponent"/>
-  <div ref="cursor" class="cursor"></div>
-</div>
+  <div
+    v-touch:swipe="swipeListener"
+    @wheel.prevent="scrollDirection"
+    class="home"
+  >
+    <NavComponent
+      :activeComponent="activeComponent"
+      @updateDestinationComponent="updateDestinationComponent"
+    />
+    <component
+      @updateActiveComponent="updateActiveComponent"
+      :animatingOut="animatingOut"
+      :is="activeComponent"
+    />
+    <div ref="cursor" class="cursor"></div>
+  </div>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
       isScrolling: false,
-      activeComponent: 'HeaderComponent',
+      activeComponent: "HeaderComponent",
+      destinationComponent: "",
       activeComponentIndex: 0,
-      components: ['HeaderComponent', 'AboutComponent', 'WorksComponent', 'ContactComponent']
-    }
+      animatingOut: false,
+      components: [
+        "HeaderComponent",
+        "AboutComponent",
+        "WorksComponent",
+        "ContactComponent"
+      ]
+    };
   },
 
-  mounted () {
-    this.mouseMove()
+  mounted() {
+    this.mouseMove();
   },
 
   methods: {
-    updateActiveComponent(component) {
-      this.activeComponent = component
-      this.findActiveComponentIndex()
+    updateActiveComponent() {
+      this.animatingOut = false;
+      this.activeComponent = this.destinationComponent;
+      this.findActiveComponentIndex();
     },
 
-    mouseMove(){
-      document.addEventListener('mousemove', (e) => {
-        this.$refs.cursor.style.left = `${e.pageX}px`
-        this.$refs.cursor.style.top = `${e.pageY}px`
-      })
+    updateDestinationComponent(component) {
+      this.animatingOut = true;
+      this.destinationComponent = component;
     },
 
-    findActiveComponentIndex(){
-      this.activeComponentIndex = this.components.indexOf(this.activeComponent)
+    mouseMove() {
+      document.addEventListener("mousemove", e => {
+        this.$refs.cursor.style.left = `${e.pageX}px`;
+        this.$refs.cursor.style.top = `${e.pageY}px`;
+      });
     },
 
-    goingUp(){
-      if(this.activeComponentIndex === 0) return
-      this.updateActiveComponent(this.components[this.activeComponentIndex-1])
+    findActiveComponentIndex() {
+      this.activeComponentIndex = this.components.indexOf(this.activeComponent);
     },
 
-    goingDown(){
-      if(this.activeComponentIndex === this.components.length-1) return
-      this.updateActiveComponent(this.components[this.activeComponentIndex+1])
+    goingUp() {
+      if (this.activeComponentIndex === 0) return;
+      this.updateDestinationComponent(
+        this.components[this.activeComponentIndex - 1]
+      );
     },
 
-    scrollDirection(e){
-        if (this.isScrolling) return;
-        if (e.deltaY === -0) return;
+    goingDown() {
+      if (this.activeComponentIndex === this.components.length - 1) return;
+      this.updateDestinationComponent(
+        this.components[this.activeComponentIndex + 1]
+      );
+    },
 
-        this.isScrolling = true;
-        if(e.deltaY < 0){
-          this.goingUp()
-        } else {
-          this.goingDown()
-        }
+    scrollDirection(e) {
+      if (this.isScrolling) return;
+      if (e.deltaY === -0) return;
 
-        setTimeout(() => {
-          this.isScrolling = false;
-        }, 2000);
+      this.isScrolling = true;
+      if (e.deltaY < 0) {
+        this.goingUp();
+      } else {
+        this.goingDown();
+      }
 
+      setTimeout(() => {
+        this.isScrolling = false;
+      }, 2000);
     },
 
     swipeListener(direction) {
@@ -70,14 +97,14 @@ export default {
 
       this.isScrolling = true;
       if (direction === "bottom") {
-        this.goingUp()
+        this.goingUp();
       } else if (direction === "top") {
-        this.goingDown()
+        this.goingDown();
       }
       setTimeout(() => {
         this.isScrolling = false;
       }, 2000);
-    },
-  },
-}
+    }
+  }
+};
 </script>

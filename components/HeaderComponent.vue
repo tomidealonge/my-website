@@ -1,5 +1,11 @@
 <template>
-  <transition appear @after-enter="afterEnter" @before-leave="leave">
+  <transition
+    appear
+    @after-enter="afterEnter"
+    @leave="leave"
+    :css="false"
+    :duration="{ enter: 500, leave: 2000 }"
+  >
     <div class="header">
       <div
         @mouseenter="increaseCursor"
@@ -53,9 +59,10 @@
 <script>
 import mouseHover from "~/mixin.js/mouse-hover";
 import splitText from "~/mixin.js/splitting";
+import animateOut from "~/mixin.js/animate-out";
 
 export default {
-  mixins: [mouseHover, splitText],
+  mixins: [mouseHover, splitText, animateOut],
 
   data() {
     return {
@@ -74,27 +81,22 @@ export default {
           x: "-100px"
         },
         {
-          duration: 0.4,
           opacity: 1,
           x: 0,
           stagger: 0.07445,
           ease: "Power1.easeout"
         }
       )
-      .to(
-        ".hero__first-line",
-        {
-          clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
-          duration: 1.2,
-          ease: "Power2.easeout"
-        },
-        "+1.5"
-      )
+      .to(".hero__first-line", {
+        clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
+        duration: 0.7,
+        ease: "Power2.easeout"
+      })
       .to(
         ".hero__first-line--overlay",
         {
           clipPath: "polygon(100% 100%, 100% 100%, 0 100%, 0 100%)",
-          duration: 1.2,
+          duration: 0.7,
           ease: "Power2.easeout"
         },
         "<"
@@ -104,19 +106,19 @@ export default {
         {
           clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
           opacity: 1,
-          duration: 1.2,
+          duration: 0.7,
           ease: "Power2.easeout"
         },
-        "-=0.7"
+        "-=0.5"
       )
       .from(
         ".sub-hero",
         {
           opacity: 0
         },
-        "-=2"
+        "-=1"
       )
-      .call(this.textAnimation, [this.selector], "-=2");
+      .call(this.textAnimation, [this.selector], "-=1");
   },
 
   methods: {
@@ -124,8 +126,9 @@ export default {
       this.timeline.play();
     },
 
-    leave() {
-      // this.timeline.reverse();
+    async leave() {
+      await this.timeline.reverse();
+      this.$emit("updateActiveComponent");
     }
   }
 };

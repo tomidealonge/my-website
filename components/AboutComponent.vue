@@ -30,9 +30,10 @@
 <script>
 import mouseHover from "~/mixin.js/mouse-hover";
 import splitText from "~/mixin.js/splitting";
+import animateOut from "~/mixin.js/animate-out";
 
 export default {
-  mixins: [mouseHover, splitText],
+  mixins: [mouseHover, splitText, animateOut],
 
   data() {
     return {
@@ -77,8 +78,9 @@ export default {
       this.timeline.play();
     },
 
-    leave() {
-      // this.timeline.reverse();
+    async leave() {
+      await this.timeline.reverse();
+      this.$emit("updateActiveComponent");
     }
   }
 };

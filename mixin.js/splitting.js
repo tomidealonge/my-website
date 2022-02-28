@@ -12,9 +12,7 @@ export default {
 
   methods: {
     textAnimation(selector) {
-      console.log(selector);
       const target = document.querySelector(`.${selector}`);
-      console.log(target);
       const result = this.splitting({
         target,
         by: "lines"
