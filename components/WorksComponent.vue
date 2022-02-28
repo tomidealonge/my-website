@@ -121,7 +121,7 @@ export default {
     },
 
     async leave() {
-      await this.timeline.reverse();
+      await this.timeline.timeScale(2).reverse();
       this.$emit("updateActiveComponent");
     },
 
