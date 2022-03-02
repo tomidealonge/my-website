@@ -5,15 +5,22 @@
   margin-right: 13.5rem;
   height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 15rem;
   flex-direction: column;
 
   @include media("<=tablet") {
+    padding-top: 100px;
     margin-left: 20px;
     margin-right: 20px;
   }
 
   &__block {
+    &.--first {
+      width: 100%;
+      max-width: 353px;
+    }
+
     @include media("<=tablet") {
       margin-right: 30px;
       margin-top: 20px
@@ -27,10 +34,12 @@
   }
 
   &__line {
-    height: 3px;
+    height: 1.75px;
     background-color: rgba($color: $white, $alpha: 0.5);
-    width: 100%;
     border-radius: 10px;
+    width: 0%;
+    margin-right: auto;
+    margin-left: 0;
   }
 
   &__details {
@@ -46,11 +55,17 @@
   &__sub-title {
     @extend %body-16;
     margin-bottom: 10px;
-    color: $gray
+    color: $gray;
+
+    &.--big {
+      @extend %title-34;
+      color: $white
+    }
   }
 
   &__link {
     @extend %body-25;
+    line-height: 40px;
 
     li {
       margin-bottom: 8px;
@@ -68,4 +83,9 @@
       color: $gray;
     }
   }
+}
+
+.even {
+  margin-left: auto !important;
+  margin-right: 0 !important;
 }

@@ -26,10 +26,20 @@
   }
 }
 
+%title-34 {
+  @extend %inter;
+  font-size: 3.5rem;
+  line-height: calc(50 / 45);
+
+  @include media("<=tablet") {
+    font-size: 30px;
+  }
+}
+
 %body-25 {
   @extend %inter;
   font-size: 2.5rem;
-  line-height: calc(39 / 26);
+  line-height: calc(30 / 26);
 
   @include media("<=tablet") {
     font-size: 25px;
@@ -39,7 +49,7 @@
 %body-16 {
   @extend %inter;
   font-size: 16px;
-  line-height: calc(39 / 16);
+  line-height: calc(30 / 16);
 }
 
 %nav {

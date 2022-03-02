@@ -4,6 +4,8 @@
     @wheel.prevent="scrollDirection"
     class="home"
   >
+    <!-- <div class="logo"></div> -->
+    <div class="logo">TA.</div>
     <NavComponent
       :activeComponent="activeComponent"
       @updateDestinationComponent="updateDestinationComponent"

@@ -4,6 +4,27 @@
   min-height: 100vh;
 }
 
+.logo {
+  position: absolute;
+  top: 60px;
+  left: 60px;
+  // width: 150px;
+  // height: 150px;
+  // background-image: url('https://ca.slack-edge.com/T0E298J7L-UM24155C5-95b6536353c6-512');
+  // background-position: center;
+  // background-size: contain;
+  // background-repeat: no-repeat;
+  // filter: invert(1);
+  color: white;
+  @extend %body-25;
+  @extend %monument;
+
+  @include media("<=tablet") {
+    top: 20px;
+    left: 20px;
+  }
+}
+
 .cursor {
   position: fixed;
   width: 20px;
