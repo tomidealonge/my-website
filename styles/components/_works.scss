@@ -45,6 +45,11 @@
       overflow-y: hidden;
       opacity: 0;
       transform: translateY(50px);
+
+      @include media("<=tablet") {
+        font-size: 25px;
+        margin-bottom: 15px;
+      }
     }
 
     &__summary {
@@ -59,6 +64,10 @@
 
       .coming-soon {
         font-size: 9px;
+      }
+
+      @include media("<=tablet") {
+        margin-top: 15px;
       }
     }
   }
