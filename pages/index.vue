@@ -4,7 +4,7 @@
     @wheel.prevent="scrollDirection"
     class="home"
   >
-    <!-- <div class="logo"></div> -->
+    <LottieComponent />
     <div class="logo">TA.</div>
     <NavComponent
       :activeComponent="activeComponent"
@@ -39,6 +39,9 @@ export default {
 
   mounted() {
     this.mouseMove();
+    this.$nextTick(() => {
+      this.$initWebflow();
+    });
   },
 
   methods: {
@@ -107,6 +110,16 @@ export default {
         this.isScrolling = false;
       }, 2000);
     }
+  },
+
+  head() {
+    return {
+      htmlAttrs: {
+        lang: "en",
+        "data-wf-page": "625c6a5308227842ea6f9d62",
+        "data-wf-site": "6230b278fc8aa147cc32e94c"
+      }
+    };
   }
 };
 </script>

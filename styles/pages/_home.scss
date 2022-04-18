@@ -2,6 +2,11 @@
   background-color: $black;
   @extend %inter;
   min-height: 100vh;
+  position: relative;
+
+  @include media("<=mobile") {
+    max-height: 90vh;
+  }
 }
 
 .logo {
