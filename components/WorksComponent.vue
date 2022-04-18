@@ -54,10 +54,10 @@
           </div>
           <div class="project__line "></div>
         </div>
-        <div class="project__wrapper project__wrapper--in-coming">
+        <div class="project__wrapper project__wrapper">
           <div class="project__desc">
             <a
-              href="#"
+              href="https://pineapple.design"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
@@ -67,7 +67,6 @@
             <ul class="project__summary">
               <li>UI Development</li>
               <li>Frontend Functionalities</li>
-              <li class="coming-soon">**Coming soon</li>
             </ul>
           </div>
           <div class="project__line "></div>
