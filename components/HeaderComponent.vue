@@ -48,9 +48,8 @@
         </div>
       </div>
       <p class="sub-hero">
-        Over the past 3 years, as an art director and designer, I’ve worked with
-        big companies and up-and-coming startups to successfully help them reach
-        their full potential.
+        I'm a frontend engineer based in Lagos, Nigeria focused on creating
+        functional products and unique experiences on the web.
       </p>
     </div>
   </transition>

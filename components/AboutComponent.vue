@@ -3,17 +3,27 @@
     <div class="about">
       <div class="about__text-block">
         <p class="about__main-text">
-          Over the past 3 years, as an art director and designer, I’ve worked
-          with big companies and up-and-coming startups.
+          Over the past 3 years, as a software engineer, I’ve worked with big
+          companies and up-and-coming startups.
         </p>
         <div class="about__white-bg-text-block">
           <p>
-            Over the past 3 years, as an art director and designer, I’ve worked
-            with big companies and up-and-coming startups to successfully help
-            them reach their full potential and attract new customers. Over the
-            past 3 years, as an art director and designer, I’ve worked with big
-            companies and up-and-coming startups to successfully help them reach
-            their full potential and attract new customers.
+            I specialize in creating amazing and functional products and
+            experiences for a diverse set of users on the web. Currently I lead
+            the frontend engineering team at
+            <a href="https://check-dc.com" class="inline-link" target="_blank"
+              >Check DC
+            </a>
+            where I channel the teams energy and expertise into creating amazing
+            products and web experiences for our diverse sets of clients and
+            users. One of those products is
+            <a
+              class="inline-link"
+              target="_blank"
+              href="https://nigerianmockups.com"
+              >Nigerian Mockups
+            </a>
+            a photo-realistic mockup repository.
           </p>
         </div>
       </div>
