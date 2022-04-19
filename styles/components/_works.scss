@@ -11,6 +11,12 @@
     margin-right: 0px;
   }
 
+  @include media("<=phone") {
+    padding-top: 100px;
+    align-items: flex-start;
+    height: 80vh;
+  }
+
   &__container {
     width: 100%;
     position: relative;

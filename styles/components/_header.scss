@@ -11,7 +11,11 @@
 
   @include media("<=phone") {
     padding-left: 20px;
+    // justify-content: flex-start;
+    // padding-top: 100px;
+    height: 80vh;
   }
+
 
   .hero {
     .text-wrapper {
