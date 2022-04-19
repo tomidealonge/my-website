@@ -9,11 +9,6 @@
 
   @include media("<=tablet") {
     margin-left: 0;
-    height: 90vh;
-  }
-
-  @include media("<=phone") {
-    height: 90vh;
   }
 
   &__picture {
