@@ -6,6 +6,7 @@
 
   @include media("<=phone") {
     max-height: 90vh;
+    min-height: 90vh;
   }
 }
 
