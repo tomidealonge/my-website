@@ -3,11 +3,6 @@
   @extend %inter;
   min-height: 100vh;
   position: relative;
-
-  @include media("<=phone") {
-    max-height: 90vh;
-    min-height: 90vh;
-  }
 }
 
 .logo {

@@ -10,7 +10,8 @@
   }
 
   @include media("<=phone") {
-    padding-left: 20px
+    padding-left: 20px;
+    height: 90vh;
   }
 
   .hero {
