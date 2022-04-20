@@ -3,7 +3,7 @@
   color: $white;
   margin-left: 30.4rem;
   margin-right: 13.5rem;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: flex-start;
   padding-top: 15rem;
@@ -15,11 +15,6 @@
     margin-right: 20px;
   }
 
-  @include media("<=phone") {
-    padding-top: 100px;
-    align-items: flex-start;
-    height: 80vh;
-  }
 
   &__block {
     &.--first {

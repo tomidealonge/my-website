@@ -28,6 +28,7 @@ export default {
       destinationComponent: "",
       activeComponentIndex: 0,
       animatingOut: false,
+      isNotMobile: window.matchMedia("(min-width: 414px)").matches,
       components: [
         "HeaderComponent",
         "AboutComponent",

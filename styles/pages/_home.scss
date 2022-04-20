@@ -2,6 +2,13 @@
   background-color: $black;
   @extend %inter;
   position: relative;
+  height: 100vh;
+  overflow: hidden;
+  overscroll-behavior: none;
+
+  @include media("<=phone") {
+    height: 90vh;
+  }
 }
 
 .logo {

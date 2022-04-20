@@ -1,9 +1,9 @@
 .header {
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding-left: 25.3rem;
+  height: 100%;
 
   @include media("<=tablet") {
     padding-left: 40px
@@ -11,9 +11,6 @@
 
   @include media("<=phone") {
     padding-left: 20px;
-    // justify-content: flex-start;
-    // padding-top: 100px;
-    height: 80vh;
   }
 
 

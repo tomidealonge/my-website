@@ -1,7 +1,7 @@
 .projects {
   margin-left: 30.4rem;
   margin-right: 13.5rem;
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   color: $white;
@@ -9,12 +9,6 @@
   @include media("<=tablet") {
     margin-left: 0px;
     margin-right: 0px;
-  }
-
-  @include media("<=phone") {
-    padding-top: 100px;
-    align-items: flex-start;
-    height: 80vh;
   }
 
   &__container {
