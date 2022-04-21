@@ -18,7 +18,6 @@
               <li>Frontend Functionalities</li>
             </ul>
           </div>
-          <div class="project__line "></div>
         </div>
         <div class="project__wrapper">
           <div class="project__line "></div>
@@ -53,7 +52,6 @@
               <li>Frontend Functionalities</li>
             </ul>
           </div>
-          <div class="project__line "></div>
         </div>
         <div class="project__wrapper">
           <div class="project__line "></div>
