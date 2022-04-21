@@ -2,22 +2,23 @@
   <transition appear @after-enter="afterEnter" @leave="leave">
     <div class="projects">
       <div class="projects__container">
-        <div class="project">
+        <div class="project__wrapper">
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://kelloggsnigeria.ng/"
+              href="https://pineapple.design"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Kelloggs</a
+              >Pineapple</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
               <li>Frontend Functionalities</li>
             </ul>
           </div>
+          <div class="project__line "></div>
         </div>
         <div class="project__wrapper">
           <div class="project__line "></div>
@@ -54,15 +55,16 @@
           </div>
           <div class="project__line "></div>
         </div>
-        <div class="project__wrapper project__wrapper">
+        <div class="project__wrapper">
+          <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://pineapple.design"
+              href="https://kelloggsnigeria.ng/"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Pineapple</a
+              >Kelloggs</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
