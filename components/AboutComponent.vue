@@ -3,20 +3,21 @@
     <div class="about">
       <div class="about__text-block">
         <p class="about__main-text">
-          Over the past 3 years, as a software engineer, I’ve worked with big
-          companies and up-and-coming startups.
+          Over the past 3 years as a software engineer, I’ve worked on a wide
+          range of projects.
         </p>
         <div class="about__white-bg-text-block">
           <p>
-            I specialize in creating amazing and functional products and
-            experiences for a diverse set of users on the web. Currently I lead
+            I specialize in creating functional products and immersive
+            experiences for diverse set of users on the web. Currently I lead
             the frontend engineering team at
             <a href="https://check-dc.com" class="inline-link" target="_blank"
               >Check DC
             </a>
-            where I channel the teams energy and expertise into creating amazing
-            products and web experiences for our diverse sets of clients and
-            users. One of those products is
+            where I channel the teams energy and expertise into creating
+            functional products and immersive web experiences.
+            <br />
+            <strong> Honorable mention: </strong>
             <a
               class="inline-link"
               target="_blank"

@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: "Tomide 👨🏾‍💻",
+    title: "Tomide",
     htmlAttrs: {
       lang: "en"
     },
@@ -18,11 +18,11 @@ export default {
         hid: "description",
         name: "description",
         content:
-          "Hi 👋🏻 I'm Tomide, a senior frontend engineer, I work with Big companies and small start-ups, Let's talk!"
+          "Hi 👋🏻 my name is Tomide. I'm a frontend engineer based in Lagos Nigeria, focused on creating functional products and unique experiences on the web."
       },
       { name: "format-detection", content: "telephone=no" }
     ],
-    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+    link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.png" }],
     script: [
       {
         src: "https://code.jquery.com/jquery-3.5.1.min.js",

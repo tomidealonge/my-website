@@ -7,7 +7,7 @@
   overscroll-behavior: none;
 
   @include media("<=phone") {
-    height: 90vh;
+    height: 100vh;
   }
 }
 
