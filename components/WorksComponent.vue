@@ -40,7 +40,7 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://moovies-hub.netlify.app/"
+              href="https://moovies.tomidealonge.com"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
