@@ -6,6 +6,13 @@
   >
     <LottieComponent />
     <div class="logo">TA.</div>
+    <lottie-animation
+      ref="anim"
+      :animation-data="require('@/assets/lottie/hamburger.json')"
+      :auto-play="false"
+      class="hamburger"
+      :loop="false"
+    />
     <NavComponent
       :activeComponent="activeComponent"
       @updateDestinationComponent="updateDestinationComponent"

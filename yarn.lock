@@ -4672,10 +4672,22 @@ lottie-vuejs@^0.4.0:
     axios "^0.19.0"
     lottie-web "^5.1.9"
 
+lottie-web-vue@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/lottie-web-vue/-/lottie-web-vue-1.0.1.tgz#c143baded93b3f31a1dc3ba2f4f31d16766b47b3"
+  integrity sha512-NrL2Muwo/WqR6HCW4Gk5OeZ0v36ml90McqdQlxOVhfkDYRWumJbsbb2EQXpl6Xy6XOaoVQzy5m1qzrh0i76ciA==
+  dependencies:
+    lottie-web "^5.7.4"
+
 lottie-web@^5.1.9:
   version "5.9.2"
   resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.2.tgz#38db3f3f3655802c465d725a359fc9d303e31335"
   integrity sha512-YnoJIKCdKIzno8G/kONOpADW6H/ORZV9puy3vWOhWmHtbDcpISFGVvvdKKa2jwAcsVqXK4xSi0po730kAPIfBw==
+
+lottie-web@^5.7.4:
+  version "5.9.4"
+  resolved "https://registry.yarnpkg.com/lottie-web/-/lottie-web-5.9.4.tgz#c01478ee5dd47f916cb4bb79040c11d427872d57"
+  integrity sha512-bSs1ZTPifnBVejO1MnQHdfrKfcn02YTCmgOh2wcAEICqRA0V7GzDh8FnwXY6+EzT+i8XOunaIloo/5xC5YNbsA==
 
 lower-case@^1.1.1:
   version "1.1.4"

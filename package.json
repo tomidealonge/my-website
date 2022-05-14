@@ -13,6 +13,7 @@
     "core-js": "^3.15.1",
     "jquery": "^3.6.0",
     "lottie-vuejs": "^0.4.0",
+    "lottie-web-vue": "1.0.1",
     "nuxt": "^2.15.7",
     "nuxt-gsap-module": "^1.6.0",
     "splitting": "^1.0.6",

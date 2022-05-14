@@ -40,15 +40,19 @@ export default {
   },
 
   server: {
-    port: 3000,
-    host: "0.0.0.0"
+    port: 3000
+    // host: "0.0.0.0"
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: ["@/styles/index.scss"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: ["~/plugins/directives", "~/plugins/prototypes"],
+  plugins: [
+    "~/plugins/directives",
+    "~/plugins/prototypes",
+    "~/plugins/components"
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,

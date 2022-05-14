@@ -15,13 +15,6 @@
   position: absolute;
   top: 60px;
   left: 60px;
-  // width: 150px;
-  // height: 150px;
-  // background-image: url('https://ca.slack-edge.com/T0E298J7L-UM24155C5-95b6536353c6-512');
-  // background-position: center;
-  // background-size: contain;
-  // background-repeat: no-repeat;
-  // filter: invert(1);
   color: white;
   @extend %body-25;
   @extend %monument;
@@ -31,6 +24,26 @@
     left: 20px;
     font-size: 30px;
   }
+
+
+
+  &--nav {
+    color: black;
+    position: static;
+  }
+}
+
+.hamburger {
+  z-index: 10;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top: 20px;
+  right: 40px;
+
+  @include media(">=tablet") {
+    display: none;
+  }
 }
 
 .cursor {
@@ -39,8 +52,8 @@
   height: 20px;
   border-radius: 50%;
   background-color: $white;
+  transition: all linear 0.3s;
   transform: translate(-50%, -50%);
-  transition: 0.2s;
   pointer-events: none;
   mix-blend-mode: difference;
 
