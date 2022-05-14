@@ -6,14 +6,16 @@
   >
     <LottieComponent />
     <div class="logo">TA.</div>
-    <lottie-animation
-      ref="anim"
-      :animation-data="require('@/assets/lottie/hamburger.json')"
-      :auto-play="false"
-      class="hamburger"
-      :loop="false"
-    />
+    <div class="hamburger" @click="toggleNavVisibility">
+      <lottie-animation
+        ref="hamburger"
+        :animation-data="require('@/assets/lottie/hamburger.json')"
+        :auto-play="false"
+        :loop="false"
+      />
+    </div>
     <NavComponent
+      :navVisibility="isNavVisible"
       :activeComponent="activeComponent"
       @updateDestinationComponent="updateDestinationComponent"
     />
@@ -31,6 +33,7 @@
 export default {
   data() {
     return {
+      isNavVisible: false,
       isScrolling: false,
       activeComponent: "HeaderComponent",
       destinationComponent: "",
@@ -54,6 +57,10 @@ export default {
   },
 
   methods: {
+    toggleNavVisibility() {
+      this.isNavVisible = !this.isNavVisible;
+    },
+
     updateActiveComponent() {
       this.animatingOut = false;
       this.activeComponent = this.destinationComponent;
@@ -61,6 +68,7 @@ export default {
     },
 
     updateDestinationComponent(component) {
+      this.isNavVisible = false;
       this.animatingOut = true;
       this.destinationComponent = component;
     },

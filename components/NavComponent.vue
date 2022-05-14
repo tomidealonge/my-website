@@ -41,9 +41,24 @@ export default {
   mixins: [mouseHover],
 
   props: {
+    navVisibility: {
+      type: Boolean,
+      default: false
+    },
+
     activeComponent: {
       type: String,
       default: "HeaderComponent"
+    }
+  },
+
+  watch: {
+    navVisibility(newValue, oldValue) {
+      if (newValue) {
+        this.animateNavIn();
+      } else {
+        this.animateNavOut();
+      }
     }
   },
 
@@ -51,6 +66,24 @@ export default {
     changeDestinationComponent(component) {
       if (component === this.activeComponent) return;
       this.$emit("updateDestinationComponent", component);
+    },
+
+    animateNavOut() {
+      this.$gsap.to(".nav-links", {
+        height: 0,
+        opacity: 0,
+        duration: 1,
+        ease: "back"
+      });
+    },
+
+    animateNavIn() {
+      this.$gsap.to(".nav-links", {
+        height: "auto",
+        opacity: 1,
+        duration: 1,
+        ease: "back"
+      });
     }
   }
 };
