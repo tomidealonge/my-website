@@ -23,10 +23,9 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://www.qwiik.co/"
-              target="_blank"
-              @mouseenter="increaseCursor"
-              @mouseleave="decreaseCursor"
+              href="#"
+              @mouseenter="false && increaseCursor"
+              @mouseleave="false && decreaseCursor"
               class="project__title"
               >Qwiik</a
             >
