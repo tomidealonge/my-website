@@ -23,7 +23,7 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="#"
+              href=""
               @mouseenter="false && increaseCursor"
               @mouseleave="false && decreaseCursor"
               class="project__title"
