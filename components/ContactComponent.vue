@@ -52,9 +52,7 @@
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
             >
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/akintomidealonge"
+              <a target="_blank" href="https://www.linkedin.com/in/tomidealonge"
                 >Linkedin</a
               >
             </li>

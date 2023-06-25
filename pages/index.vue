@@ -104,8 +104,10 @@ export default {
 
       this.isScrolling = true;
       if (e.deltaY < 0) {
+        console.log("going up");
         this.goingUp();
       } else {
+        console.log("going down");
         this.goingDown();
       }
 
