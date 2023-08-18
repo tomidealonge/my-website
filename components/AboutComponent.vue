@@ -8,11 +8,11 @@
         </p>
         <div class="about__white-bg-text-block">
           <p>
-            I specialize in creating functional products and immersive
-            experiences for diverse set of users on the web. Currently I lead
+            I specialize in creating functional products, and immersive
+            experiences for diverse set of users on the web. Currently, I lead
             the frontend engineering team at
             <a href="https://check-dc.com" class="inline-link" target="_blank"
-              >Check DC
+              >Check DC,
             </a>
             where I channel the teams energy and expertise into creating
             functional products and immersive web experiences.

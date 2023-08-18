@@ -48,8 +48,8 @@
         </div>
       </div>
       <p class="sub-hero">
-        Hi 👋🏻 I'm Tomide a frontend engineer based in Lagos Nigeria focused on
-        creating functional products and unique experiences on the web.
+        Hi, 👋🏻 I'm Tomide, a frontend engineer focused on creating functional
+        products and unique experiences on the web.
       </p>
     </div>
   </transition>
