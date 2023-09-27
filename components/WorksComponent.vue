@@ -23,15 +23,17 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="#"
+              href="https://wiicreate.com"
+              target="_blank"
               @mouseenter="false && increaseCursor"
               @mouseleave="false && decreaseCursor"
               class="project__title"
-              >Qwiik</a
+              >WiiCreate</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
               <li>Frontend Functionalities</li>
+              <li>Strapi CMS</li>
             </ul>
           </div>
         </div>
