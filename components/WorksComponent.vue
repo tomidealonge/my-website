@@ -28,10 +28,11 @@
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >WiiCreate Marketing Website and E-commerce Platform</a
+              >WiiCreate</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
+              <li>E-commerce</li>
               <li>Frontend Functionalities</li>
               <li>Strapi CMS</li>
             </ul>
