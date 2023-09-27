@@ -25,10 +25,10 @@
             <a
               href="https://wiicreate.com"
               target="_blank"
-              @mouseenter="false && increaseCursor"
-              @mouseleave="false && decreaseCursor"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
               class="project__title"
-              >WiiCreate</a
+              >WiiCreate Marketing Website and E-commerce Platform</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
