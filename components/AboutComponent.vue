@@ -10,7 +10,7 @@
           <p>
             I specialize in creating functional products, and immersive
             experiences for diverse set of users on the web. Currently, I lead
-            the frontend engineering team at
+            the engineering team at
             <a href="https://check-dc.com" class="inline-link" target="_blank"
               >Check DC,
             </a>

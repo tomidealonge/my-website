@@ -14,24 +14,24 @@
       >
         <div class="text-wrapper">
           <div class="hero__first-line">
-            <span>F</span>
-            <span>R</span>
+            <span>S</span>
             <span>O</span>
-            <span>N</span>
+            <span>F</span>
             <span>T</span>
+            <span>W</span>
+            <span>A</span>
+            <span>R</span>
             <span>E</span>
-            <span>N</span>
-            <span>D</span>
           </div>
           <div class="hero__first-line hero__first-line--overlay">
-            <span>F</span>
-            <span>R</span>
+            <span>S</span>
             <span>O</span>
-            <span>N</span>
+            <span>F</span>
             <span>T</span>
+            <span>W</span>
+            <span>A</span>
+            <span>R</span>
             <span>E</span>
-            <span>N</span>
-            <span>D</span>
           </div>
         </div>
         <div class="text-wrapper">
@@ -48,7 +48,7 @@
         </div>
       </div>
       <p class="sub-hero">
-        Hi, 👋🏻 I'm Tomide, a frontend engineer focused on creating functional
+        Hi, 👋🏻 I'm Tomide, a software engineer focused on creating functional
         products and unique experiences on the web.
       </p>
     </div>

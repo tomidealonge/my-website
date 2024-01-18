@@ -8,8 +8,8 @@
 
 %title-152 {
   @extend %monument;
-  font-size: 15.2rem;
-  line-height: calc(150 / 152);
+  font-size: 13.2rem;
+  line-height: calc(130 / 130);
 
   @include media("<=tablet") {
     font-size: 45px;
