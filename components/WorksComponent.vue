@@ -59,7 +59,7 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="#"
+              href="https://redtown.xyz"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
