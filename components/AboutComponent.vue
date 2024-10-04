@@ -3,7 +3,7 @@
     <div class="about">
       <div class="about__text-block">
         <p class="about__main-text">
-          Over the past 4 years as a software engineer, I’ve worked on a wide
+          Over the past 5 years as a software engineer, I’ve worked on a wide
           range of projects.
         </p>
         <div class="about__white-bg-text-block">
