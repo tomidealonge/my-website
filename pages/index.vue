@@ -75,8 +75,10 @@ export default {
 
     mouseMove() {
       document.addEventListener("mousemove", e => {
-        this.$refs.cursor.style.left = `${e.pageX}px`;
-        this.$refs.cursor.style.top = `${e.pageY}px`;
+        setTimeout(() => {
+          this.$refs.cursor.style.left = `${e.pageX}px`;
+          this.$refs.cursor.style.top = `${e.pageY}px`;
+        }, 50);
       });
     },
 
@@ -142,3 +144,11 @@ export default {
   }
 };
 </script>
+
+<style>
+.cursor {
+  position: absolute;
+  transition: transform 0.3s ease-out;
+  cursor: none;
+}
+</style>
