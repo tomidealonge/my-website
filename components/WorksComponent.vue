@@ -31,10 +31,8 @@
               >WiiCreate</a
             >
             <ul class="project__summary">
-              <li>UI Development</li>
               <li>E-commerce</li>
               <li>Frontend Functionalities</li>
-              <li>Strapi CMS</li>
             </ul>
           </div>
         </div>
@@ -42,12 +40,12 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://moovies.tomidealonge.com"
+              href="https://build.vana.org/"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Moovies Hub</a
+              >Vana</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
@@ -64,12 +62,11 @@
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >RT Website</a
+              >Redtown</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
               <li>Frontend Functionalities</li>
-              <li>Strapi CMS</li>
             </ul>
           </div>
           <div class="project__line "></div>

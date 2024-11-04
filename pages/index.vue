@@ -44,6 +44,7 @@ export default {
         "HeaderComponent",
         "AboutComponent",
         "WorksComponent",
+        "WorksComponentExtra",
         "ContactComponent"
       ]
     };

@@ -3,28 +3,16 @@
     <div class="about">
       <div class="about__text-block">
         <p class="about__main-text">
-          Over the past 5 years as a software engineer, I’ve worked on a wide
+          Over the past 6 years as a software engineer, I’ve worked on a wide
           range of projects.
         </p>
         <div class="about__white-bg-text-block">
           <p>
             I specialize in creating functional products, and immersive
             experiences for diverse set of users on the web. Currently, I lead
-            the engineering team at
-            <a href="https://check-dc.com" class="inline-link" target="_blank"
-              >Check DC,
-            </a>
-            where I channel the teams energy and expertise into creating
-            functional products and immersive web experiences.
+            an engineering team where I channel the teams energy and expertise
+            into creating functional products and immersive web experiences.
             <br />
-            <strong> Honorable mention: </strong>
-            <a
-              class="inline-link"
-              target="_blank"
-              href="https://nigerianmockups.com"
-              >Nigerian Mockups
-            </a>
-            a photo-realistic mockup repository.
           </p>
         </div>
       </div>

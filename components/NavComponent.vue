@@ -19,7 +19,11 @@
     <li
       @mouseenter="increaseCursor"
       @mouseleave="decreaseCursor"
-      :class="activeComponent === 'WorksComponent' && '--active'"
+      :class="
+        (activeComponent === 'WorksComponent' ||
+          activeComponent === 'WorksComponentExtra') &&
+          '--active'
+      "
       @click="changeDestinationComponent('WorksComponent')"
     >
       My Works
