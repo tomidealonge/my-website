@@ -19,7 +19,7 @@
           </div>
           <div class="project__line "></div>
         </div>
-        <div class="project__wrapper">
+        <div v-if="false" class="project__wrapper">
           <div class="project__line "></div>
           <div class="project__desc">
             <a
