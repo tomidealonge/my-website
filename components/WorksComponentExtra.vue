@@ -19,6 +19,24 @@
           </div>
           <div class="project__line "></div>
         </div>
+        <div class="project__wrapper">
+          <div class="project__line "></div>
+          <div class="project__desc">
+            <a
+              href="https://redtown.xyz"
+              target="_blank"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
+              class="project__title"
+              >Redtown</a
+            >
+            <ul class="project__summary">
+              <li>UI Development</li>
+              <li>Frontend Functionalities</li>
+            </ul>
+          </div>
+          <div class="project__line "></div>
+        </div>
       </div>
     </div>
   </transition>

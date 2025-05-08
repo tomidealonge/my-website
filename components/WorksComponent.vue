@@ -57,12 +57,12 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://redtown.xyz"
+              href="https://monieworld.com"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Redtown</a
+              >Monieworld</a
             >
             <ul class="project__summary">
               <li>UI Development</li>
