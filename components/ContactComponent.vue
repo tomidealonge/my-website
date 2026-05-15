@@ -77,7 +77,7 @@
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               target="_blank"
-              href="https://twitter.com/_eljosh"
+              href="https://joshuaoladiti.com/"
               >Josh</a
             ></span
           >

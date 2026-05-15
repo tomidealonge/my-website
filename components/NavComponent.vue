@@ -1,46 +1,69 @@
 <template>
-  <ul class="nav-links">
+  <ul class="nav-links" ref="navList">
+    <!-- Single travelling indicator -->
+    <div class="nav-indicator" ref="indicator">
+      <div class="nav-indicator__circle"></div>
+    </div>
+
     <li
+      ref="link0"
       @mouseenter="increaseCursor"
       @mouseleave="decreaseCursor"
       :class="activeComponent === 'HeaderComponent' && '--active'"
       @click="changeDestinationComponent('HeaderComponent')"
     >
-      Home
+      Intro
     </li>
     <li
+      ref="link1"
       @mouseenter="increaseCursor"
       @mouseleave="decreaseCursor"
       :class="activeComponent === 'AboutComponent' && '--active'"
       @click="changeDestinationComponent('AboutComponent')"
     >
-      About me
+      about
     </li>
     <li
+      ref="link2"
       @mouseenter="increaseCursor"
       @mouseleave="decreaseCursor"
-      :class="
-        (activeComponent === 'WorksComponent' ||
-          activeComponent === 'WorksComponentExtra') &&
-          '--active'
-      "
+      :class="activeComponent === 'WorksComponent' && '--active'"
       @click="changeDestinationComponent('WorksComponent')"
     >
-      My Works
+      Works
     </li>
     <li
+      ref="link3"
+      @mouseenter="increaseCursor"
+      @mouseleave="decreaseCursor"
+      :class="activeComponent === 'WorksComponentExtra' && '--active'"
+      @click="changeDestinationComponent('WorksComponentExtra')"
+    >
+      Playground
+    </li>
+    <li
+      ref="link4"
       @mouseenter="increaseCursor"
       @mouseleave="decreaseCursor"
       :class="activeComponent === 'ContactComponent' && '--active'"
       @click="changeDestinationComponent('ContactComponent')"
     >
-      Contact me
+      Reach out
     </li>
   </ul>
 </template>
 
 <script>
 import mouseHover from "~/mixin.js/mouse-hover";
+
+const COMPONENT_INDEX_MAP = {
+  HeaderComponent: 0,
+  AboutComponent: 1,
+  WorksComponent: 2,
+  WorksComponentExtra: 3,
+  ContactComponent: 4
+};
+
 export default {
   mixins: [mouseHover],
 
@@ -49,20 +72,30 @@ export default {
       type: Boolean,
       default: false
     },
-
     activeComponent: {
       type: String,
       default: "HeaderComponent"
     }
   },
 
+  mounted() {
+    // Snap indicator to initial active item with no animation
+    this.$nextTick(() => {
+      this.moveIndicator(this.activeComponent, false);
+    });
+  },
+
   watch: {
-    navVisibility(newValue, oldValue) {
+    navVisibility(newValue) {
       if (newValue) {
         this.animateNavIn();
       } else {
         this.animateNavOut();
       }
+    },
+
+    activeComponent(newComponent) {
+      this.moveIndicator(newComponent, true);
     }
   },
 
@@ -70,6 +103,27 @@ export default {
     changeDestinationComponent(component) {
       if (component === this.activeComponent) return;
       this.$emit("updateDestinationComponent", component);
+    },
+
+    moveIndicator(component, animate = true) {
+      const index = COMPONENT_INDEX_MAP[component];
+      const targetLi = this.$refs[`link${index}`];
+      const indicator = this.$refs.indicator;
+
+      if (!targetLi || !indicator) return;
+
+      // offsetTop gives position relative to the ul parent
+      const targetTop = targetLi.offsetTop + targetLi.offsetHeight / 2;
+
+      if (animate) {
+        this.$gsap.to(indicator, {
+          top: targetTop,
+          duration: 0.6,
+          ease: "power3.inOut"
+        });
+      } else {
+        this.$gsap.set(indicator, { top: targetTop });
+      }
     },
 
     animateNavOut() {

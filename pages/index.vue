@@ -5,6 +5,7 @@
     class="home"
   >
     <LottieComponent />
+    <canvas ref="noiseCanvas" class="noise-canvas"></canvas>
     <div class="logo">TA.</div>
     <div class="hamburger" @click="toggleNavVisibility">
       <lottie-animation
@@ -14,11 +15,14 @@
         :loop="false"
       />
     </div>
-    <NavComponent
-      :navVisibility="isNavVisible"
-      :activeComponent="activeComponent"
-      @updateDestinationComponent="updateDestinationComponent"
-    />
+
+    <div class="nav-comp-wrapper">
+      <NavComponent
+        :navVisibility="isNavVisible"
+        :activeComponent="activeComponent"
+        @updateDestinationComponent="updateDestinationComponent"
+      />
+    </div>
     <component
       @updateActiveComponent="updateActiveComponent"
       :animatingOut="animatingOut"
@@ -52,12 +56,40 @@ export default {
 
   mounted() {
     this.mouseMove();
+    // this.generateNoise();
     this.$nextTick(() => {
       this.$initWebflow();
     });
   },
 
   methods: {
+    generateNoise() {
+      const canvas = this.$refs.noiseCanvas;
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      const ctx = canvas.getContext("2d");
+
+      const draw = () => {
+        const imageData = ctx.createImageData(canvas.width, canvas.height);
+        const buffer = imageData.data;
+
+        for (let i = 0; i < buffer.length; i += 4) {
+          const value = Math.random() * 255;
+          buffer[i] = value;
+          buffer[i + 1] = value;
+          buffer[i + 2] = value;
+          buffer[i + 3] = 27;
+        }
+
+        ctx.putImageData(imageData, 0, 0);
+        requestAnimationFrame(draw);
+      };
+
+      draw();
+    },
+
     toggleNavVisibility() {
       this.isNavVisible = !this.isNavVisible;
     },
@@ -75,12 +107,30 @@ export default {
     },
 
     mouseMove() {
+      let mouseX = 0,
+        mouseY = 0;
+      let cursorX = 0,
+        cursorY = 0;
+
       document.addEventListener("mousemove", e => {
-        setTimeout(() => {
-          this.$refs.cursor.style.left = `${e.pageX}px`;
-          this.$refs.cursor.style.top = `${e.pageY}px`;
-        }, 50);
+        mouseX = e.pageX;
+        mouseY = e.pageY;
       });
+
+      const animate = () => {
+        // Lerp factor — lower = more lag/slippery (0.05–0.15 is a good range)
+        const ease = 0.08;
+
+        cursorX += (mouseX - cursorX) * ease;
+        cursorY += (mouseY - cursorY) * ease;
+
+        this.$refs.cursor.style.left = `${cursorX}px`;
+        this.$refs.cursor.style.top = `${cursorY}px`;
+
+        requestAnimationFrame(animate);
+      };
+
+      animate();
     },
 
     findActiveComponentIndex() {

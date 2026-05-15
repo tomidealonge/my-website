@@ -1,10 +1,17 @@
+.nav-comp-wrapper {
+  position: fixed;
+}
+
 .nav-links {
   position: fixed;
   left: 8rem;
   top: 50%;
   bottom: auto;
   right: auto;
-  transform: translateY(-70%);
+  transform: translateY(70%);
+
+  // Needed so the indicator's offsetTop math is relative to this element
+  position: relative;
 
   @include media("<=tablet") {
     transform: translateY(0%);
@@ -19,12 +26,39 @@
     height: 0;
   }
 
+  // The single travelling indicator
+  .nav-indicator {
+    position: absolute;
+    left: -40%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+
+    @include media("<=tablet") {
+      display: none;
+    }
+
+    &__circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid $white;
+      background-image: url('@/assets/images/right-arrow.png');
+      background-position: center;
+      background-size: 40%;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
+    }
+  }
+
   li {
     margin: 2.1rem 0px;
     color: rgba($color: $white, $alpha: 0.4);
     text-transform: uppercase;
     @extend %nav;
-    cursor: pointer;
+    // cursor: pointer;
     transition-property: color, transform;
     transition-duration: 0.5s;
     transition-timing-function: $ease-out-expo;
@@ -38,35 +72,10 @@
     &.--active {
       color: $white;
 
-      &::before {
-        @include media("<=tablet") {
-          display: none;
-        }
-
-        content: "";
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        border: 1px solid $white;
-        background-image: url('@/assets/images/right-arrow.png');
-        background-position: center;
-        background-size: 40%;
-        position: absolute;
-        background-repeat: no-repeat;
-        left: -40%;
-        top: 50%;
-        bottom: 0;
-        right: 20px;
-        flex-shrink: 0;
-        transform: translateY(-50%);
-        transition: all 500ms ease-in-out;
-      }
-
       @include media("<=tablet") {
         color: black;
         margin: 0px;
       }
     }
-
   }
 }

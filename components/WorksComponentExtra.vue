@@ -6,33 +6,47 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://converter.tomidealonge.com"
+              href="https://sliders.tomidealonge.com/"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Webflow 🔄 Nuxt Converter</a
+              >Sliders</a
             >
             <p class="project__summary">
-              Convert Webflow Export to a Nuxt Project
+              Fun build for full page slider
             </p>
           </div>
           <div class="project__line "></div>
         </div>
         <div v-if="false" class="project__wrapper">
-          <div class="project__line "></div>
           <div class="project__desc">
             <a
-              href="https://redtown.xyz"
+              href="https://pictures.tomidealonge.com"
               target="_blank"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
               class="project__title"
-              >Redtown</a
+              >My wife and I</a
             >
             <ul class="project__summary">
-              <li>UI Development</li>
-              <li>Frontend Functionalities</li>
+              <p>Fun build with my wife</p>
+            </ul>
+          </div>
+          <div class="project__line "></div>
+        </div>
+        <div class="project__wrapper">
+          <div class="project__desc">
+            <a
+              href="https://3d-sticky-cards-peel-off.akintomide-alonge.workers.dev"
+              target="_blank"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
+              class="project__title"
+              >Image peel off</a
+            >
+            <ul class="project__summary">
+              <p>Items peel off on scroll</p>
             </ul>
           </div>
           <div class="project__line "></div>
