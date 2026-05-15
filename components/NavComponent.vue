@@ -30,7 +30,7 @@
       :class="activeComponent === 'WorksComponent' && '--active'"
       @click="changeDestinationComponent('WorksComponent')"
     >
-      Works
+      Projects
     </li>
     <li
       ref="link3"
