@@ -6,6 +6,23 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
+              href="https://whiteboard.is"
+              target="_blank"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
+              class="project__title"
+              >Whiteboard</a
+            >
+            <ul class="project__summary">
+              <li>Webflow Development</li>
+              <li>Frontend Functionalities</li>
+            </ul>
+          </div>
+        </div>
+        <div v-if="false" class="project__wrapper">
+          <div class="project__line "></div>
+          <div class="project__desc">
+            <a
               href="https://monieworld.com"
               target="_blank"
               @mouseenter="increaseCursor"
