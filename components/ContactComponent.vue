@@ -12,7 +12,7 @@
       <div class="contact__details">
         <div class="contact__block --first">
           <div class="contact__sub-title --big">
-            Wanna start something?
+            Wanna Be Startin' Somethin
           </div>
           <p class="contact__sub-title">
             Feel free to reach out if you wanna collaborate with me, or simply
