@@ -29,7 +29,7 @@
             >
               <a
                 target="_blank"
-                href="mailto:Enquiries From Website?subject=akintomide.alonge%40gmail.com"
+                href="mailto:akintomide.alonge@gmail.com?subject=Enquiries From Website"
                 >Email</a
               >
             </li>
