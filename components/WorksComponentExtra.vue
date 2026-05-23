@@ -6,6 +6,22 @@
           <div class="project__line "></div>
           <div class="project__desc">
             <a
+              href="https://3d-sticky-cards-peel-off.akintomide-alonge.workers.dev"
+              target="_blank"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
+              class="project__title"
+              >Image peel off</a
+            >
+            <ul class="project__summary">
+              <p>Items peel off on scroll</p>
+            </ul>
+          </div>
+        </div>
+        <div class="project__wrapper">
+          <div class="project__line "></div>
+          <div class="project__desc">
+            <a
               href="https://sliders.tomidealonge.com/"
               target="_blank"
               @mouseenter="increaseCursor"
@@ -31,22 +47,6 @@
             >
             <ul class="project__summary">
               <p>Fun build with my wife</p>
-            </ul>
-          </div>
-          <div class="project__line "></div>
-        </div>
-        <div class="project__wrapper">
-          <div class="project__desc">
-            <a
-              href="https://3d-sticky-cards-peel-off.akintomide-alonge.workers.dev"
-              target="_blank"
-              @mouseenter="increaseCursor"
-              @mouseleave="decreaseCursor"
-              class="project__title"
-              >Image peel off</a
-            >
-            <ul class="project__summary">
-              <p>Items peel off on scroll</p>
             </ul>
           </div>
           <div class="project__line "></div>
