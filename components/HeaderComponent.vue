@@ -7,11 +7,7 @@
     :duration="{ enter: 500, leave: 2000 }"
   >
     <div class="header">
-      <div
-        @mouseenter="increaseCursor"
-        @mouseleave="decreaseCursor"
-        class="hero"
-      >
+      <div class="hero">
         <div class="text-wrapper">
           <div class="hero__first-line">
             <span>S</span>
