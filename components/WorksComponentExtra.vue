@@ -35,6 +35,25 @@
           </div>
           <div class="project__line "></div>
         </div>
+        <div class="project__wrapper">
+          <div class="project__desc">
+            <a
+              href="https://splytrebuild.netlify.app/"
+              target="_blank"
+              @mouseenter="increaseCursor"
+              @mouseleave="decreaseCursor"
+              class="project__title"
+              >SPYLT CLONE</a
+            >
+            <ul class="project__summary">
+              <p>
+                Fun rebuild of an Awwwards Site of the day (I'm loving Tailwind
+                more)
+              </p>
+            </ul>
+          </div>
+          <div class="project__line "></div>
+        </div>
         <div v-if="false" class="project__wrapper">
           <div class="project__desc">
             <a
