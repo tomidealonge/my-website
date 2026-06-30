@@ -57,6 +57,7 @@
               >
             </li>
             <li
+              v-if="false"
               class="socials"
               @mouseenter="increaseCursor"
               @mouseleave="decreaseCursor"
