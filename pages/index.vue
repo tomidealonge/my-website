@@ -27,6 +27,7 @@
       :animatingOut="animatingOut"
       :is="components[activeComponent]"
     />
+    <InteractiveComponent />
     <div ref="cursor" class="cursor"></div>
     <div class="scroll-indicator"></div>
   </div>
@@ -40,6 +41,7 @@ import AboutComponent from "~/components/AboutComponent.vue";
 import WorksComponent from "~/components/WorksComponent.vue";
 import WorksComponentExtra from "~/components/WorksComponentExtra.vue";
 import ContactComponent from "~/components/ContactComponent.vue";
+import InteractiveComponent from "~/components/InteractiveComponent.vue";
 
 // Map of section-component names to their definitions for `<component :is>`
 const components = {
@@ -47,14 +49,14 @@ const components = {
   AboutComponent,
   WorksComponent,
   WorksComponentExtra,
-  ContactComponent
+  ContactComponent,
 };
 const componentOrder = [
   "HeaderComponent",
   "AboutComponent",
   "WorksComponent",
   "WorksComponentExtra",
-  "ContactComponent"
+  "ContactComponent",
 ];
 
 const noiseCanvas = ref(null);
@@ -67,9 +69,7 @@ const destinationComponent = ref("");
 const activeComponentIndex = ref(0);
 const animatingOut = ref(false);
 const isNotMobile = ref(
-  import.meta.client
-    ? window.matchMedia("(min-width: 414px)").matches
-    : false
+  import.meta.client ? window.matchMedia("(min-width: 414px)").matches : false
 );
 
 const generateNoise = () => {
@@ -113,7 +113,7 @@ const updateActiveComponent = () => {
   findActiveComponentIndex();
 };
 
-const updateDestinationComponent = component => {
+const updateDestinationComponent = (component) => {
   isNavVisible.value = false;
   animatingOut.value = true;
   destinationComponent.value = component;
@@ -125,7 +125,7 @@ const mouseMove = () => {
   let cursorX = 0,
     cursorY = 0;
 
-  document.addEventListener("mousemove", e => {
+  document.addEventListener("mousemove", (e) => {
     mouseX = e.pageX;
     mouseY = e.pageY;
   });
@@ -158,7 +158,7 @@ const goingDown = () => {
   updateDestinationComponent(componentOrder[activeComponentIndex.value + 1]);
 };
 
-const scrollDirection = e => {
+const scrollDirection = (e) => {
   if (isScrolling.value) return;
   if (e.deltaY === -0) return;
 
@@ -176,7 +176,7 @@ const scrollDirection = e => {
   }, 2000);
 };
 
-const swipeListener = direction => {
+const swipeListener = (direction) => {
   if (isScrolling.value) return;
 
   isScrolling.value = true;
@@ -194,8 +194,8 @@ useHead({
   htmlAttrs: {
     lang: "en",
     "data-wf-page": "625c6a5308227842ea6f9d62",
-    "data-wf-site": "6230b278fc8aa147cc32e94c"
-  }
+    "data-wf-site": "6230b278fc8aa147cc32e94c",
+  },
 });
 
 onMounted(() => {
