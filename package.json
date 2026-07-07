@@ -2,28 +2,29 @@
   "name": "tomide",
   "version": "1.0.0",
   "private": true,
+  "packageManager": "pnpm@10.30.0",
   "engines": {
-    "node": ">=16.19.1"
+    "node": ">=18.0.0"
   },
   "scripts": {
-    "dev": "nuxt",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start",
-    "generate": "nuxt generate"
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.13.6",
-    "core-js": "^3.15.1",
-    "jquery": "^3.6.0",
-    "lottie-vuejs": "^0.4.0",
-    "lottie-web-vue": "1.0.1",
-    "nuxt": "^2.15.7",
-    "nuxt-gsap-module": "^1.6.0",
-    "splitting": "^1.0.6",
-    "vue2-touch-events": "^3.2.2"
+    "gsap": "^3.15.0",
+    "jquery": "^3.7.1",
+    "lottie-web-vue": "^2.0.7",
+    "splitting": "^1.1.0",
+    "vue3-touch-events": "^5.0.15"
   },
   "devDependencies": {
-    "sass": "^1.43.3",
-    "sass-loader": "10.1.1"
+    "nuxt": "^3.21.8",
+    "sass": "^1.101.0"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["@parcel/watcher", "esbuild"]
   }
 }

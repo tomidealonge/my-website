@@ -88,87 +88,84 @@
   </transition>
 </template>
 
-<script>
-import animateOut from "~/mixin.js/animate-out";
-import mouseHover from "~/mixin.js/mouse-hover";
-import splitText from "~/mixin.js/splitting";
+<script setup>
+const { $gsap } = useNuxtApp();
+const { increaseCursor, decreaseCursor } = useMouseHover();
 
-export default {
-  mixins: [mouseHover, splitText, animateOut],
+const props = defineProps({
+  animatingOut: {
+    type: Boolean,
+    default: false
+  }
+});
 
-  data() {
-    return {
-      selector: "contact__sub-title",
-      mainTextSelector: "about__main-text",
-      timeline: this.$gsap.timeline({ paused: true })
-    };
-  },
+const emit = defineEmits(["updateActiveComponent"]);
 
-  mounted() {
-    this.animateLines();
-    this.timeline
-      .to(".contact__line", {
-        width: "100%",
-        ease: "Power2.easeout"
-      })
-      .from(".contact__title", {
+const timeline = $gsap.timeline({ paused: true });
+
+const afterEnter = () => {
+  timeline.play();
+};
+
+const animateLines = () => {
+  const lines = document.querySelectorAll(".contact__line");
+  lines.forEach((line, index) => {
+    const num = index + 1;
+    if (num % 2 === 0) {
+      line.classList.add("even");
+    }
+  });
+};
+
+const leave = async () => {
+  await timeline.timeScale(2).reverse();
+  emit("updateActiveComponent");
+};
+
+useAnimateOut(() => props.animatingOut, leave);
+
+onMounted(() => {
+  animateLines();
+  timeline
+    .to(".contact__line", {
+      width: "100%",
+      ease: "Power2.easeout"
+    })
+    .from(".contact__title", {
+      opacity: 0,
+      duration: 1,
+      ease: "Power1.easeout"
+    })
+    .from(
+      ".contact__sub-title",
+      {
         opacity: 0,
         duration: 1,
         ease: "Power1.easeout"
-      })
-      .from(
-        ".contact__sub-title",
-        {
-          opacity: 0,
-          duration: 1,
-          ease: "Power1.easeout"
-        },
-        "<"
-      )
-      .from(
-        ".email",
-        {
-          opacity: 0,
-          x: -30,
-          duration: 0.7,
-          ease: "Power1.easeout",
-          stagger: 0.245
-        },
-        "-=1"
-      )
-      .from(
-        ".socials",
-        {
-          opacity: 0,
-          x: -30,
-          duration: 0.7,
-          ease: "Power1.easeout",
-          stagger: 0.245
-        },
-        "<"
-      );
-    // .call(this.textAnimation, [this.selector], "-=1");
-  },
-
-  methods: {
-    afterEnter() {
-      this.timeline.play();
-    },
-
-    animateLines() {
-      this.lines = document.querySelectorAll(".contact__line");
-      this.lines.forEach((line, index) => {
-        const num = index + 1;
-        if (num % 2 === 0) {
-          line.classList.add("even");
-        }
-      });
-    },
-
-    async leave() {
-      await this.timeline.timeScale(2).reverse();
-      this.$emit("updateActiveComponent");
-    }
-  }
-};
+      },
+      "<"
+    )
+    .from(
+      ".email",
+      {
+        opacity: 0,
+        x: -30,
+        duration: 0.7,
+        ease: "Power1.easeout",
+        stagger: 0.245
+      },
+      "-=1"
+    )
+    .from(
+      ".socials",
+      {
+        opacity: 0,
+        x: -30,
+        duration: 0.7,
+        ease: "Power1.easeout",
+        stagger: 0.245
+      },
+      "<"
+    );
+});
 </script>

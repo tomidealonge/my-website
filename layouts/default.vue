@@ -14,12 +14,8 @@
       crossorigin="anonymous"
       onload="this.rel='stylesheet'"
     />
-    <Nuxt />
+    <slot />
   </div>
 </template>
-
-<script>
-export default {};
-</script>
 
 <style lang="scss" scoped></style>

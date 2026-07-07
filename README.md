@@ -1,69 +1,88 @@
 # Portfolio
 
+A Nuxt 3 (Vue 3, Composition API) single-page portfolio, rendered as a static SPA
+(`ssr: false`) and animated with GSAP.
+
+## Requirements
+
+- Node.js `>= 18` (Node `>= 22` avoids an install-time engine warning from a
+  transitive Nuxt dependency)
+- [pnpm](https://pnpm.io/) (`corepack enable` will provide the version pinned in
+  `package.json`)
+
 ## Build Setup
 
 ```bash
 # install dependencies
-$ yarn install
+$ pnpm install
 
 # serve with hot reload at localhost:3000
-$ yarn dev
+$ pnpm dev
 
-# build for production and launch server
-$ yarn build
-$ yarn start
+# build for production (SPA output served by the Nitro server)
+$ pnpm build
 
-# generate static project
-$ yarn generate
+# preview the production build
+$ pnpm preview
+
+# generate a static site into .output/public (deploy to any static host)
+$ pnpm generate
 ```
 
-For detailed explanation on how things work, check out the [documentation](https://nuxtjs.org).
+For a detailed explanation of how things work, check out the
+[Nuxt 3 documentation](https://nuxt.com/docs).
 
-## Special Directories
+## Directory Structure
 
-You can create the following extra directories, some of which have special behaviors. Only `pages` is required; you can delete them if you don't want to use their functionality.
+### `app.vue`
+
+The application entry. Renders `<NuxtLayout>` + `<NuxtPage>`.
 
 ### `assets`
 
-The assets directory contains your uncompiled assets such as Stylus or Sass files, images, or fonts.
+Uncompiled assets such as Sass files, images, and fonts. These are processed by
+the build tool and referenced via the `~/assets/...` alias (e.g. imported in
+`<script setup>`).
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/assets).
+More info: [Nuxt assets](https://nuxt.com/docs/guide/directory-structure/assets).
 
 ### `components`
 
-The components directory contains your Vue.js components. Components make up the different parts of your page and can be reused and imported into your pages, layouts and even other components.
+Vue.js components. Auto-imported by Nuxt, so they can be used in templates
+without an explicit import.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/components).
+More info: [Nuxt components](https://nuxt.com/docs/guide/directory-structure/components).
+
+### `composables`
+
+Reusable Composition API functions (`useMouseHover`, `useSplitText`,
+`useAnimateOut`). Auto-imported by Nuxt.
+
+More info: [Nuxt composables](https://nuxt.com/docs/guide/directory-structure/composables).
 
 ### `layouts`
 
-Layouts are a great help when you want to change the look and feel of your Nuxt app, whether you want to include a sidebar or have distinct layouts for mobile and desktop.
+Layout wrappers. `default.vue` wraps every page and renders `<slot />`.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/layouts).
-
+More info: [Nuxt layouts](https://nuxt.com/docs/guide/directory-structure/layouts).
 
 ### `pages`
 
-This directory contains your application views and routes. Nuxt will read all the `*.vue` files inside this directory and setup Vue Router automatically.
+Application views and routes. Nuxt reads every `*.vue` file here and configures
+Vue Router automatically.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/get-started/routing).
+More info: [Nuxt pages](https://nuxt.com/docs/guide/directory-structure/pages).
 
 ### `plugins`
 
-The plugins directory contains JavaScript plugins that you want to run before instantiating the root Vue.js Application. This is the place to add Vue plugins and to inject functions or constants. Every time you need to use `Vue.use()`, you should create a file in `plugins/` and add its path to plugins in `nuxt.config.js`.
+Plugins registered before the Vue app mounts (`defineNuxtPlugin`). Used here to
+register the Lottie component, `vue3-touch-events`, and to provide `$gsap`.
 
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/plugins).
+More info: [Nuxt plugins](https://nuxt.com/docs/guide/directory-structure/plugins).
 
-### `static`
+### `public`
 
-This directory contains your static files. Each file inside this directory is mapped to `/`.
+Static files served at the site root. Example: `public/webflow.js` is served as
+`/webflow.js`.
 
-Example: `/static/robots.txt` is mapped as `/robots.txt`.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/static).
-
-### `store`
-
-This directory contains your Vuex store files. Creating a file in this directory automatically activates Vuex.
-
-More information about the usage of this directory in [the documentation](https://nuxtjs.org/docs/2.x/directory-structure/store).
+More info: [Nuxt public](https://nuxt.com/docs/guide/directory-structure/public).

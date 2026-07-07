@@ -31,26 +31,26 @@ export const removeEmptyKeys = obj => {
 // SSR LocalStorage
 export const ssrLocalStorage = {
   getItem(key) {
-    if (process.client) {
+    if (import.meta.client) {
       return localStorage.getItem(key);
     }
     return null;
   },
 
   setItem(key, value) {
-    if (process.client) {
+    if (import.meta.client) {
       localStorage.setItem(key, value);
     }
   },
 
   removeItem(key) {
-    if (process.client) {
+    if (import.meta.client) {
       localStorage.removeItem(key);
     }
   },
 
   clear() {
-    if (process.client) {
+    if (import.meta.client) {
       localStorage.clear();
     }
   }

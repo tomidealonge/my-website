@@ -75,63 +75,63 @@
   </transition>
 </template>
 
-<script>
-import animateOut from "~/mixin.js/animate-out";
-import mouseHover from "~/mixin.js/mouse-hover";
+<script setup>
+const { $gsap } = useNuxtApp();
+const { increaseCursor, decreaseCursor } = useMouseHover();
 
-export default {
-  mixins: [mouseHover, animateOut],
+const props = defineProps({
+  animatingOut: {
+    type: Boolean,
+    default: false
+  }
+});
 
-  data() {
-    return {
-      lines: null,
-      timeline: this.$gsap.timeline({ paused: true })
-    };
-  },
+const emit = defineEmits(["updateActiveComponent"]);
 
-  mounted() {
-    this.animateLines();
-    this.timeline
-      .to(".project__line", {
-        width: "100%",
-        ease: "Power2.easeout",
-        stagger: 0.15
-      })
-      .to(".project__title", {
+const timeline = $gsap.timeline({ paused: true });
+
+const afterEnter = () => {
+  timeline.play();
+};
+
+const animateLines = () => {
+  const lines = document.querySelectorAll(".project__line");
+  lines.forEach((line, index) => {
+    const num = index + 1;
+    if (num % 2 === 0) {
+      line.classList.add("even");
+    }
+  });
+};
+
+const leave = async () => {
+  await timeline.timeScale(2).reverse();
+  emit("updateActiveComponent");
+};
+
+useAnimateOut(() => props.animatingOut, leave);
+
+onMounted(() => {
+  animateLines();
+  timeline
+    .to(".project__line", {
+      width: "100%",
+      ease: "Power2.easeout",
+      stagger: 0.15
+    })
+    .to(".project__title", {
+      opacity: 1,
+      y: "0",
+      stagger: 0.15
+    })
+    .to(
+      ".project__summary li",
+      {
         opacity: 1,
         y: "0",
         stagger: 0.15
-      })
-      .to(
-        ".project__summary li",
-        {
-          opacity: 1,
-          y: "0",
-          stagger: 0.15
-        },
-        "<"
-      );
-  },
-
-  methods: {
-    afterEnter() {
-      this.timeline.play();
-    },
-
-    async leave() {
-      await this.timeline.timeScale(2).reverse();
-      this.$emit("updateActiveComponent");
-    },
-
-    animateLines() {
-      this.lines = document.querySelectorAll(".project__line");
-      this.lines.forEach((line, index) => {
-        const num = index + 1;
-        if (num % 2 === 0) {
-          line.classList.add("even");
-        }
-      });
-    }
-  }
-};
+      },
+      "<"
+    );
+});
 </script>

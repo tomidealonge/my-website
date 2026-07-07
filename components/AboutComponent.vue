@@ -17,70 +17,69 @@
         </div>
       </div>
       <div class="about__picture">
-        <img
-          src="@/assets/images/me.png"
-          alt="A picture of me, a very good one 🥰"
-        />
+        <img :src="mePicture" alt="A picture of me, a very good one 🥰" />
       </div>
     </div>
   </transition>
 </template>
 
-<script>
-import mouseHover from "~/mixin.js/mouse-hover";
-import splitText from "~/mixin.js/splitting";
-import animateOut from "~/mixin.js/animate-out";
+<script setup>
+import mePicture from "~/assets/images/me.png";
 
-export default {
-  mixins: [mouseHover, splitText, animateOut],
+const { $gsap } = useNuxtApp();
+const { textAnimation } = useSplitText();
 
-  data() {
-    return {
-      selector: "about__white-bg-text-block p",
-      mainTextSelector: "about__main-text",
-      timeline: this.$gsap.timeline({ paused: true })
-    };
-  },
+const props = defineProps({
+  animatingOut: {
+    type: Boolean,
+    default: false
+  }
+});
 
-  mounted() {
-    this.timeline
-      .to(".about__picture", {
-        clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+const emit = defineEmits(["updateActiveComponent"]);
+
+const selector = "about__white-bg-text-block p";
+const mainTextSelector = "about__main-text";
+const timeline = $gsap.timeline({ paused: true });
+
+const afterEnter = () => {
+  timeline.play();
+};
+
+const leave = async () => {
+  await timeline.timeScale(2).reverse();
+  emit("updateActiveComponent");
+};
+
+useAnimateOut(() => props.animatingOut, leave);
+
+onMounted(() => {
+  timeline
+    .to(".about__picture", {
+      clipPath: "polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)",
+      duration: 1.2,
+      ease: "Power2.easeout"
+    })
+    .to(
+      `.about__white-bg-text-block`,
+      {
+        clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
         duration: 1.2,
         ease: "Power2.easeout"
-      })
-      .to(
-        `.about__white-bg-text-block`,
-        {
-          clipPath: "polygon(0 0, 100% 0, 100% 100%, 0 100%)",
-          duration: 1.2,
-          ease: "Power2.easeout"
-        },
-        "<"
-      )
-      .to(`.about__main-text`, {
+      },
+      "<"
+    )
+    .to(`.about__main-text`, {
+      opacity: 1
+    })
+    .call(textAnimation, [mainTextSelector], "<")
+    .to(
+      `.about__white-bg-text-block p`,
+      {
         opacity: 1
-      })
-      .call(this.textAnimation, [this.mainTextSelector], "<")
-      .to(
-        `.about__white-bg-text-block p`,
-        {
-          opacity: 1
-        },
-        "-=1"
-      )
-      .call(this.textAnimation, [this.selector], "<");
-  },
-
-  methods: {
-    afterEnter() {
-      this.timeline.play();
-    },
-
-    async leave() {
-      await this.timeline.timeScale(2).reverse();
-      this.$emit("updateActiveComponent");
-    }
-  }
-};
+      },
+      "-=1"
+    )
+    .call(textAnimation, [selector], "<");
+});
 </script>

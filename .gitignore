@@ -68,7 +68,8 @@ typings/
 # nuxt.js build output
 .nuxt
 
-# Nuxt generate
+# Nuxt build/generate output
+.output
 dist
 
 # vuepress build output

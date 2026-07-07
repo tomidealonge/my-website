@@ -1,11 +1,5 @@
 <template>
-  <transition
-    appear
-    @after-enter="afterEnter"
-    @leave="leave"
-    :css="false"
-    :duration="{ enter: 500, leave: 2000 }"
-  >
+  <transition appear @leave="leave">
     <div class="header">
       <div class="hero">
         <div class="text-wrapper">
@@ -51,80 +45,80 @@
   </transition>
 </template>
 
-<script>
-import mouseHover from "~/mixin.js/mouse-hover";
-import splitText from "~/mixin.js/splitting";
-import animateOut from "~/mixin.js/animate-out";
+<script setup>
+const { $gsap } = useNuxtApp();
+const { textAnimation } = useSplitText();
 
-export default {
-  mixins: [mouseHover, splitText, animateOut],
+const props = defineProps({
+  animatingOut: {
+    type: Boolean,
+    default: false
+  }
+});
 
-  data() {
-    return {
-      lines: [],
-      selector: "sub-hero",
-      timeline: this.$gsap.timeline({ paused: true })
-    };
-  },
+const emit = defineEmits(["updateActiveComponent"]);
 
-  mounted() {
-    this.timeline
-      .fromTo(
-        ".hero__first-line span",
-        {
-          opacity: 0,
-          x: "-100px"
-        },
-        {
-          opacity: 1,
-          x: 0,
-          stagger: 0.07445,
-          ease: "Power1.easeout"
-        }
-      )
-      .to(".hero__first-line", {
-        clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
+const selector = "sub-hero";
+const timeline = $gsap.timeline({ paused: true });
+
+const leave = async () => {
+  await timeline.timeScale(2).reverse();
+  emit("updateActiveComponent");
+};
+
+useAnimateOut(() => props.animatingOut, leave);
+
+onMounted(() => {
+  timeline
+    .fromTo(
+      ".hero__first-line span",
+      {
+        opacity: 0,
+        x: "-100px"
+      },
+      {
+        opacity: 1,
+        x: 0,
+        stagger: 0.07445,
+        ease: "Power1.easeout"
+      }
+    )
+    .to(".hero__first-line", {
+      clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
+      duration: 0.7,
+      ease: "Power2.easeout"
+    })
+    .to(
+      ".hero__first-line--overlay",
+      {
+        clipPath: "polygon(100% 100%, 100% 100%, 0 100%, 0 100%)",
         duration: 0.7,
         ease: "Power2.easeout"
-      })
-      .to(
-        ".hero__first-line--overlay",
-        {
-          clipPath: "polygon(100% 100%, 100% 100%, 0 100%, 0 100%)",
-          duration: 0.7,
-          ease: "Power2.easeout"
-        },
-        "<"
-      )
-      .to(
-        ".hero__last-line",
-        {
-          clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
-          opacity: 1,
-          duration: 0.7,
-          ease: "Power2.easeout"
-        },
-        "-=0.5"
-      )
-      .from(
-        ".sub-hero",
-        {
-          opacity: 0
-        },
-        "-=1"
-      )
-      .call(this.textAnimation, [this.selector], "-=1");
-  },
+      },
+      "<"
+    )
+    .to(
+      ".hero__last-line",
+      {
+        clipPath: "polygon(100% 100%, 100% 0, 0 0, 0 100%)",
+        opacity: 1,
+        duration: 0.7,
+        ease: "Power2.easeout"
+      },
+      "-=0.5"
+    )
+    .from(
+      ".sub-hero",
+      {
+        opacity: 0
+      },
+      "-=1"
+    )
+    .call(textAnimation, [selector], "-=1");
 
-  methods: {
-    afterEnter() {
-      this.timeline.play();
-    },
-
-    async leave() {
-      await this.timeline.timeScale(2).reverse();
-      this.$emit("updateActiveComponent");
-    }
-  }
-};
+  // The header is the initial component, so it mounts via the transition's
+  // `appear` path rather than a normal enter. Play the intro directly on mount
+  // instead of relying on the appear hook firing.
+  timeline.play();
+});
 </script>
