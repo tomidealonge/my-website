@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import tailwindcss from "@tailwindcss/vite";
+
 export default defineNuxtConfig({
   // SPA mode (previously `ssr: false` + `target: static` in Nuxt 2)
   ssr: false,
@@ -43,7 +45,11 @@ export default defineNuxtConfig({
   },
 
   // Global CSS
-  css: ["~/styles/index.scss"],
+  css: ["~/assets/css/tailwind.css", "~/styles/index.scss"],
+
+  vite: {
+    plugins: [tailwindcss()]
+  },
 
   // Workaround for Nuxt 3.21.8 SPA regression: `resolveServerEntry` throws
   // "No entry found in rollupOptions.input" when `ssr: false`. Ensures the

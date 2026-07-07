@@ -14,10 +14,12 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@tailwindcss/vite": "^4.3.2",
     "gsap": "^3.15.0",
     "jquery": "^3.7.1",
     "lottie-web-vue": "^2.0.7",
     "splitting": "^1.1.0",
+    "tailwindcss": "^4.3.2",
     "vue3-touch-events": "^5.0.15"
   },
   "devDependencies": {
@@ -25,6 +27,9 @@
     "sass": "^1.101.0"
   },
   "pnpm": {
-    "onlyBuiltDependencies": ["@parcel/watcher", "esbuild"]
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "esbuild"
+    ]
   }
 }
