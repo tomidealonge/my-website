@@ -1,6 +1,6 @@
 <template>
   <div
-    class="z-[10] fixed bottom-[20px] right-[20px] cursor-pointer border-amber-50"
+    class="z-[1000] fixed bottom-[20px] right-[20px] cursor-pointer border-amber-50"
   >
     <motion.div
       v-if="compState === 'idle'"
@@ -10,9 +10,9 @@
     >
       <span class="shrink-0">
         <motion.svg
-          :animate="{ scale: 1.05 }"
+          :animate="{ scale: 1.05, rotate: 180 }"
           :initial="{
-            scale: 0.9,
+            scale: 0.8,
           }"
           :transition="{ repeat: Infinity, repeatType: 'reverse', duration: 2 }"
           width="40"
@@ -122,8 +122,17 @@
           />
         </svg>
       </div>
-      <div class="text-white">
+      <div
+        class="text-white font-[monument] text-center max-w-[288px] mx-auto mb-[82px] leading-8"
+      >
         Hey there, you look like someone with great taste
+      </div>
+      <div class="flex justify-center">
+        <button
+          class="bg-white cursor-pointer text-black px-[40px] py-[10px] rounded-[20px] font-[inter] font-semibold text-[11px] uppercase"
+        >
+          Next
+        </button>
       </div>
     </motion.div>
   </div>

@@ -27,7 +27,7 @@
       :animatingOut="animatingOut"
       :is="components[activeComponent]"
     />
-    <InteractiveComponent />
+    <!-- <InteractiveComponent /> -->
     <div ref="cursor" class="cursor"></div>
     <div class="scroll-indicator"></div>
   </div>
