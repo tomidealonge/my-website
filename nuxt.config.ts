@@ -43,5 +43,39 @@ export default defineNuxtConfig({
   },
 
   // Global CSS
-  css: ["~/styles/index.scss"]
+  css: ["~/styles/index.scss"],
+
+  // Workaround for Nuxt 3.21.8 SPA regression: `resolveServerEntry` throws
+  // "No entry found in rollupOptions.input" when `ssr: false`. Ensures the
+  // client input object exposes both `entry` and `server` keys.
+  // Remove once upgraded to Nuxt >= 3.21.9. See nuxt/nuxt#35033.
+  hooks: {
+    "vite:extendConfig"(config) {
+      const rollupInput = config.build?.rollupOptions?.input;
+
+      if (
+        !rollupInput ||
+        typeof rollupInput === "string" ||
+        Array.isArray(rollupInput)
+      ) {
+        return;
+      }
+
+      const firstInput = Object.values(rollupInput).find(
+        (value) => typeof value === "string"
+      );
+
+      if (!firstInput) {
+        return;
+      }
+
+      if (!rollupInput.entry) {
+        rollupInput.entry = firstInput;
+      }
+
+      if (!rollupInput.server) {
+        rollupInput.server = firstInput;
+      }
+    }
+  }
 });
