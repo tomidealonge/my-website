@@ -41,7 +41,6 @@ import AboutComponent from "~/components/AboutComponent.vue";
 import WorksComponent from "~/components/WorksComponent.vue";
 import WorksComponentExtra from "~/components/WorksComponentExtra.vue";
 import ContactComponent from "~/components/ContactComponent.vue";
-import InteractiveComponent from "~/components/InteractiveComponent.vue";
 
 // Map of section-component names to their definitions for `<component :is>`
 const components = {
@@ -72,31 +71,79 @@ const isNotMobile = ref(
   import.meta.client ? window.matchMedia("(min-width: 414px)").matches : false
 );
 
+// Noise animation handles, kept for cleanup on unmount.
+let noiseFrameId = null;
+let noiseResizeHandler = null;
+
 const generateNoise = () => {
   const canvas = noiseCanvas.value;
-
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
+  if (!canvas) return;
 
   const ctx = canvas.getContext("2d");
+  if (!ctx) return;
 
-  const draw = () => {
-    const imageData = ctx.createImageData(canvas.width, canvas.height);
-    const buffer = imageData.data;
+  // Small tile repeated across the screen. Generating a handful of tiles once
+  // (instead of a full-screen buffer every frame) is what makes this cheap.
+  const TILE_SIZE = 256;
+  const FRAME_COUNT = 10;
+  const ALPHA = 27;
+  // Film-grain reads fine well below 60fps; throttling halves the work.
+  const frameInterval = 1000 / 24;
 
+  // Pre-render the noise frames ONCE into reusable patterns.
+  const patterns = [];
+  const tileCanvas = document.createElement("canvas");
+  tileCanvas.width = TILE_SIZE;
+  tileCanvas.height = TILE_SIZE;
+  const tileCtx = tileCanvas.getContext("2d");
+  const imageData = tileCtx.createImageData(TILE_SIZE, TILE_SIZE);
+  const buffer = imageData.data;
+
+  for (let f = 0; f < FRAME_COUNT; f++) {
     for (let i = 0; i < buffer.length; i += 4) {
       const value = Math.random() * 255;
       buffer[i] = value;
       buffer[i + 1] = value;
       buffer[i + 2] = value;
-      buffer[i + 3] = 27;
+      buffer[i + 3] = ALPHA;
     }
+    tileCtx.putImageData(imageData, 0, 0);
 
-    ctx.putImageData(imageData, 0, 0);
-    requestAnimationFrame(draw);
+    const frameCanvas = document.createElement("canvas");
+    frameCanvas.width = TILE_SIZE;
+    frameCanvas.height = TILE_SIZE;
+    frameCanvas.getContext("2d").drawImage(tileCanvas, 0, 0);
+    patterns.push(ctx.createPattern(frameCanvas, "repeat"));
+  }
+
+  const resize = () => {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   };
+  resize();
 
-  draw();
+  let currentFrame = 0;
+  let lastTime = 0;
+
+  const draw = (time) => {
+    noiseFrameId = requestAnimationFrame(draw);
+    if (time - lastTime < frameInterval) return;
+    lastTime = time;
+
+    currentFrame = (currentFrame + 1) % FRAME_COUNT;
+    // Just tile a ready-made pattern: no per-pixel work, no allocation.
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = patterns[currentFrame];
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+  noiseFrameId = requestAnimationFrame(draw);
+
+  let resizeTimeout;
+  noiseResizeHandler = () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(resize, 150);
+  };
+  window.addEventListener("resize", noiseResizeHandler);
 };
 
 const toggleNavVisibility = () => {
@@ -200,10 +247,16 @@ useHead({
 
 onMounted(() => {
   mouseMove();
-  // generateNoise();
+  generateNoise();
   nextTick(() => {
     initWebflow();
   });
+});
+
+onUnmounted(() => {
+  if (noiseFrameId) cancelAnimationFrame(noiseFrameId);
+  if (noiseResizeHandler)
+    window.removeEventListener("resize", noiseResizeHandler);
 });
 </script>
 
