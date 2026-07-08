@@ -9,6 +9,15 @@ export default defineNuxtConfig({
     port: 3000
   },
 
+  // `nuxt generate` writes the static site here. A top-level, non-hidden
+  // `dist/` avoids Cloudflare Pages issues with the default dot-prefixed
+  // `.output/public` directory. Set Cloudflare's output directory to `dist`.
+  nitro: {
+    output: {
+      publicDir: "dist"
+    }
+  },
+
   app: {
     head: {
       title: "Tomide",

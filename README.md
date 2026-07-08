@@ -29,6 +29,25 @@ $ pnpm preview
 $ pnpm generate
 ```
 
+## Deploying to Cloudflare Pages (or any static host)
+
+This is a pure SPA (`ssr: false`), so it must be deployed as a **static site**.
+`nuxt build` (the default) uses the `node-server` preset and does **not** emit an
+`index.html` — that HTML is produced by the Nitro server at runtime. A static
+host has no server to run it, so you get a blank screen.
+
+Use `nuxt generate` instead, which writes real `index.html` / `200.html` /
+`404.html` files. Via `nitro.output.publicDir` in `nuxt.config.ts`, that output
+is written to a top-level `dist/` folder (a normal, non-hidden directory, which
+Cloudflare Pages handles more reliably than the default dot-prefixed
+`.output/public`).
+
+Cloudflare Pages settings:
+
+- **Build command:** `pnpm generate`
+- **Build output directory:** `dist`
+- **Environment variable:** `NODE_VERSION = 22` (also pinned via `.node-version`)
+
 For a detailed explanation of how things work, check out the
 [Nuxt 3 documentation](https://nuxt.com/docs).
 
