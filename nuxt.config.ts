@@ -63,9 +63,16 @@ export default defineNuxtConfig({
   // Workaround for Nuxt 3.21.8 SPA regression: `resolveServerEntry` throws
   // "No entry found in rollupOptions.input" when `ssr: false`. Ensures the
   // client input object exposes both `entry` and `server` keys.
+  //
+  // DEV ONLY: in a production build this mutation adds a phantom `server`
+  // entry to the client bundle, which breaks Vite's CSS-to-entry association
+  // and drops the global stylesheet (blank/unstyled page). The dev-server
+  // crash it fixes only happens under `nuxt dev`.
   // Remove once upgraded to Nuxt >= 3.21.9. See nuxt/nuxt#35033.
   hooks: {
     "vite:extendConfig"(config) {
+      if (process.env.NODE_ENV === "production") return;
+
       const rollupInput = config.build?.rollupOptions?.input;
 
       if (
