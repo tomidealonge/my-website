@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-if="false">
     <link
       rel="preload"
       as="style"
