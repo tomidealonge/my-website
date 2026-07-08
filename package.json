@@ -18,6 +18,7 @@
     "gsap": "^3.15.0",
     "jquery": "^3.7.1",
     "lottie-web-vue": "^2.0.7",
+    "motion-v": "^2.3.0",
     "splitting": "^1.1.0",
     "tailwindcss": "^4.3.2",
     "vue3-touch-events": "^5.0.15"

@@ -68,7 +68,7 @@ const destinationComponent = ref("");
 const activeComponentIndex = ref(0);
 const animatingOut = ref(false);
 const isNotMobile = ref(
-  import.meta.client ? window.matchMedia("(min-width: 414px)").matches : false
+  import.meta.client ? window.matchMedia("(min-width: 414px)").matches : false,
 );
 
 // Noise animation handles, kept for cleanup on unmount.
